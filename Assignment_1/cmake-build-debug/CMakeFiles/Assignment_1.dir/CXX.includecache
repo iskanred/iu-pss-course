@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/main.cpp
+sentences.h
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences.h
+
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences.h
+string
+-
+vector
+-
+cctype
+-
+fstream
+-
+sentences_processing.h
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences_processing.h
+sentences_io.h
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences_io.h
+
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences_io.h
+sentences.h
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences.h
+
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences_processing.h
+sentences.h
+C:/Users/iskanred/Documents/Programming/INNO/PSS2-course/Assignment_1/sentences.h
+
