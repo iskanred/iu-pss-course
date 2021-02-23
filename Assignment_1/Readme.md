@@ -15,7 +15,7 @@ Open folder as a project in **CLion**, then just run it (*main.cpp* is main file
 
 *main.cpp* | *sentences.h* | *sentences_processing.h* | *sentences_io.h* | *sentences_processing.cpp* | *sentences_io.cpp*
 
-### Input/Output Fules
+### Input/Output Files
 
 *in.txt* | *out.txt*
 
