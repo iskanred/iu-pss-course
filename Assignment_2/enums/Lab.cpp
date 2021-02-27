@@ -18,14 +18,13 @@ const Lab Lab::ROBOTICS = Lab(LabType::ROBOTICS);
 
 /* Constructor */
 
-Lab::Lab(Lab::LabType lab) {
-    Lab::lab = lab;
-}
+Lab::Lab(Lab::LabType lab) : lab(lab)
+{ }
 
 
 /* Public member-functions */
 
-std::string Lab::toString() {
+std::string Lab::toString() const {
     switch (lab) {
         case LabType::DATA_SCIENCE :
             return "DATA_SCIENCE";

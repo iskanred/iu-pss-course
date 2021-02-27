@@ -20,9 +20,9 @@ public:
 
     [[nodiscard]] std::string toString() const override;
 
-    void setAccessLevelForUser(User& user, AccessLevel accessLevel) const;
+    void setAccessLevelForUser(User& user, const AccessLevel& accessLevel) const;
 
-    void setAccessLevelForRoom(Room& room, AccessLevel accessLevel) const;
+    void setAccessLevelForRoom(Room& room, const AccessLevel& accessLevel) const;
 
     void grantUserAccessToRoom(const User& user, Room& room) const;
 

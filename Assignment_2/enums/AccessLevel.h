@@ -7,27 +7,45 @@
 /**
  * An attempt to create a powerful enum class as in Java
  *  with methods and fields
+ *
+ * This class is completely immutable
+ * There are only 4 instances of this class that can exist in the program.
+ *  These instances are static const members of this class
+ *  - NO_LEVEL
+ *  - GREEN
+ *  - YELLOW
+ *  - RED
+ *
+ * But there is always an option to add new types of access level, and extend this class
  */
 class AccessLevel final {
 
     /** Inner enum */
     enum class AccessType {
-        NO_LEVEL,
-        GREEN,
-        YELLOW,
-        RED
+        NO_LEVEL = 0,
+        GREEN = 1,
+        YELLOW = 2,
+        RED = 3
     };
 
 
-    AccessType access;
+    const AccessType access;
 
 
     /** Constructor for only in-class instances  */
     explicit AccessLevel(AccessType access);
 
 public:
+    // Declaring copy constructor, no move constructor will be generated implicitly
+    AccessLevel(const AccessLevel&) = delete;
+
+    // Declaring copy-assignment-operator, no move-assignment-operator will be generated implicitly
+    AccessLevel& operator=(const AccessLevel&) = delete;
+
+
     /* Constants */
 
+    /** These constants are the only instances of this class that can exist in the program */
     static const AccessLevel NO_LEVEL;
     static const AccessLevel GREEN;
     static const AccessLevel YELLOW;

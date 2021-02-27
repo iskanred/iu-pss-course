@@ -2,14 +2,15 @@
 #define ASSIGNMENT_2_PROFESSOR_H
 
 #include "User.h"
-#include <vector>
+#include "../enums/Course.h"
+#include <set>
 
 
 class Professor : public User {
 
     std::string favoriteJoke;
 
-    std::vector<std::string> courses;
+    std::set<const Course*> courses;
 
 public:
     /* Constructor */
@@ -17,7 +18,7 @@ public:
             std::string surname,
             std::string tgAlias,
             std::string favoriteJoke,
-            std::vector<std::string> courses);
+            std::set<const Course*> courses);
 
 
     /* Public member-functions */
@@ -31,14 +32,14 @@ public:
 
     void setFavoriteJoke(const std::string &favoriteJoke);
 
-    void setCourses(const std::vector<std::string> &courses);
+    void setCourses(const std::set<const Course*> &courses);
 
 
     /* Getters */
 
     [[nodiscard]] const std::string &getFavoriteJoke() const;
 
-    [[nodiscard]] const std::vector<std::string> &getCourses() const;
+    [[nodiscard]] const std::set<const Course*> &getCourses() const;
 
 };
 

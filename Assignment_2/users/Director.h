@@ -2,21 +2,38 @@
 #define ASSIGNMENT_2_DIRECTOR_H
 
 #include "User.h"
+#include "../rooms/DirectorCabinet.h"
+
+
+class DirectorCabinet;
+
+class DirectorCabinetSetter;
 
 
 class Director : public User {
+
+    friend class DirectorCabinetSetter;
+
     /**
      * Director can often leave the university for business-trips
      * The system may need to know whether a director is at the university
      */
     bool presentAtUniversity;
 
+    const DirectorCabinet* cabinet;
+
 public:
+    /* Constructors */
+
+    Director(std::string name,
+             std::string surname,
+             std::string tgAlias);
+
     /* Constructor */
     Director(std::string name,
              std::string surname,
              std::string tgAlias,
-             bool presentAtUniversity);
+             DirectorCabinet& cabinet);
 
 
     /* Public member-functions */
@@ -30,11 +47,21 @@ public:
 
     void setPresentAtUniversity(bool presentAtUniversity);
 
+    void setCabinet(DirectorCabinet& cabinet);
+
 
     /* Getters */
 
     [[nodiscard]] bool isPresentAtUniversity() const;
 
+    /**
+     * (Nullable)!
+     *
+     * @return - pointer to a director's cabinet;
+     *         - 'nullptr' if it is no director's cabinet
+     *                  associated to this director yet
+     */
+    [[nodiscard]] const DirectorCabinet *getCabinet() const;
 };
 
 

@@ -20,14 +20,14 @@ string Admin::toString() const {
     return "Admin " + getFullName();
 }
 
-void Admin::setAccessLevelForUser(User &user, AccessLevel accessLevel) const {
+void Admin::setAccessLevelForUser(User &user, const AccessLevel& accessLevel) const {
     UserAccessUpdater::updateAccess(user, accessLevel);
 
     cout << toString() << " has updated " << user.toString()
             << "'s access level to " << accessLevel.toString() << endl;
 }
 
-void Admin::setAccessLevelForRoom(Room &room, AccessLevel accessLevel) const {
+void Admin::setAccessLevelForRoom(Room &room, const AccessLevel& accessLevel) const {
     RoomPropertiesUpdater::updateAccess(room, accessLevel);
 
     cout << toString() << " has updated access level of " << room.toString()

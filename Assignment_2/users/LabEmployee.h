@@ -8,7 +8,7 @@
 
 class LabEmployee : public User {
 
-    Lab lab;
+    const Lab* lab;
 
     std::string position; // должность
 
@@ -17,7 +17,7 @@ public:
     LabEmployee(std::string name,
                 std::string surname,
                 std::string tgAlias,
-                Lab lab,
+                const Lab& lab,
                 std::string position);
 
 
@@ -32,14 +32,14 @@ public:
 
     /* Setters */
 
-    void changeLab(Lab lab);
+    void changeLab(const Lab& lab);
 
     void setPosition(const std::string &position);
 
 
     /* Getters */
 
-    [[nodiscard]] Lab getLab() const;
+    [[nodiscard]] const Lab& getLab() const;
 
     [[nodiscard]] const std::string &getPosition() const;
 

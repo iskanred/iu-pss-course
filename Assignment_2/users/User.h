@@ -24,7 +24,7 @@ protected:
 
     std::string tgAlias; // telegram alias
 
-    AccessLevel accessLevel;
+    const AccessLevel* accessLevel;
 
     std::string universityEmail;
 
@@ -33,7 +33,7 @@ protected:
     User(std::string name,
          std::string surname,
          std::string tgAlias,
-         AccessLevel accessLevel);
+         const AccessLevel& accessLevel);
 
 public:
     /* Overloaded Operators */
@@ -67,7 +67,7 @@ public:
 
     [[nodiscard]] const std::string &getUniversityEmail() const;
 
-    [[nodiscard]] AccessLevel getAccessLevel() const;
+    [[nodiscard]] const AccessLevel &getAccessLevel() const;
 
 private:
     /* Private functions */
@@ -98,10 +98,20 @@ class UserAccessUpdater {
 
     friend class Admin;
 
-    static void updateAccess(User& user, AccessLevel accessLevel);
+    static void updateAccess(User& user, const AccessLevel& accessLevel);
 
 public:
+    /* Deleting all possible ways to create an instance of this class */
+
     UserAccessUpdater() = delete;
+
+    ~UserAccessUpdater() = delete;
+
+    // Declaring copy constructor, no move constructor will be generated implicitly
+    UserAccessUpdater(const UserAccessUpdater&) = delete;
+
+    // Declaring copy-assignment-operator, no move-assignment-operator will be generated implicitly
+    UserAccessUpdater& operator=(const UserAccessUpdater&) = delete;
 };
 
 #endif //ASSIGNMENT_2_USER_H

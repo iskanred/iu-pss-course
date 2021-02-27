@@ -5,8 +5,8 @@
 
 /* Constructor */
 
-Room::Room(std::string number, AccessLevel accessLevel) :
-    number(std::move(number)), accessLevel(accessLevel)
+Room::Room(std::string number, const AccessLevel& accessLevel) :
+    number(std::move(number)), accessLevel(&accessLevel)
 { }
 
 
@@ -25,7 +25,7 @@ auto Room::iteratorToUser(const User &user) const {
 /* Public member-functions */
 
 void Room::openByUser(const User& user) const {
-    if (user.getAccessLevel() < accessLevel &&
+    if (user.getAccessLevel() < *accessLevel &&
         !hasUserGrantedAccess(user))
     {
         std::cout << user.toString() << " cannot open the "
@@ -53,15 +53,15 @@ const std::vector<const User*> &Room::getGrantedAccessUsers() const {
 }
 
 const AccessLevel &Room::getAccessLevel() const {
-    return accessLevel;
+    return *accessLevel;
 }
 
 
 
 /* RoomPropertiesUpdater */
 
-void RoomPropertiesUpdater::updateAccess(Room& room, AccessLevel accessLevel) {
-    room.accessLevel = accessLevel;
+void RoomPropertiesUpdater::updateAccess(Room& room, const AccessLevel& accessLevel) {
+    room.accessLevel = &accessLevel;
 }
 
 void RoomPropertiesUpdater::addGrantedAccessUser(Room& room, const User &user) {

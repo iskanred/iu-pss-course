@@ -3,6 +3,7 @@
 
 #include "User.h"
 #include "Professor.h"
+#include <set>
 
 
 class Student : public User {
@@ -11,13 +12,16 @@ class Student : public User {
 
     bool studyOffline;
 
+    std::set<const Course*> courses;
+
 public:
     /* Constructor */
     Student(std::string name,
             std::string surname,
             std::string tgAlias,
             std::string group,
-            bool studyOffline);
+            bool studyOffline,
+            std::set<const Course*> courses);
 
 
     /* Public member-functions */
@@ -35,12 +39,16 @@ public:
 
     void setStudyOffline(bool studyOffline);
 
+    void setCourses(const std::set<const Course *> &courses);
+
 
     /* Getters */
 
     [[nodiscard]] const std::string &getGroup() const;
 
     [[nodiscard]] bool isStudyOffline() const;
+
+    [[nodiscard]] const std::set<const Course *> &getCourses() const;
 
 private:
    /* Private functions */

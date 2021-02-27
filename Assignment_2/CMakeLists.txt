@@ -6,9 +6,12 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Assignment_2
         main.cpp
 
+        enums/enums.h
         enums/Lab.h
         enums/AccessLevel.h
+        enums/Course.h
 
+        users/users.h
         users/User.h
         users/Student.h
         users/Professor.h
@@ -16,6 +19,7 @@ add_executable(Assignment_2
         users/Director.h
         users/Admin.h
 
+        rooms/rooms.h
         rooms/Room.h
         rooms/ClassRoom.h
         rooms/LectureRoom.h
@@ -27,6 +31,7 @@ add_executable(Assignment_2
 
         enums/Lab.cpp
         enums/AccessLevel.cpp
+        enums/Course.cpp
 
         users/User.cpp
         users/Student.cpp

@@ -51,15 +51,15 @@ bool AccessLevel::operator<=(const AccessLevel &rhs) const {
 std::string AccessLevel::toString() const {
     switch (access) {
         case AccessType::NO_LEVEL :
-            return "NO_LEVEL";
+            return "[NO_LEVEL]";
 
         case AccessType::YELLOW :
-            return "YELLOW";
+            return "[YELLOW]";
 
         case AccessType::GREEN :
-            return "GREEN";
+            return "[GREEN]";
 
         case AccessType::RED :
-            return "RED";
+            return "[RED]";
     }
 }

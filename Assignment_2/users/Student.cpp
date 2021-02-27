@@ -4,9 +4,9 @@ using namespace std;
 
 /* Constructor */
 
-Student::Student(string name, string surname, string tgAlias, string group, bool studyOffline) :
+Student::Student(string name, string surname, string tgAlias, string group, bool studyOffline, set<const Course*> courses) :
     User(move(name), move(surname), move(tgAlias), AccessLevel::GREEN),
-    group(move(group)), studyOffline(studyOffline)
+    group(move(group)), studyOffline(studyOffline), courses(move(courses))
 {
     universityEmail = generateEmailForStudent();
 }
@@ -38,6 +38,10 @@ void Student::setStudyOffline(bool studyOffline) {
     Student::studyOffline = studyOffline;
 }
 
+void Student::setCourses(const set<const Course *> &courses) {
+    Student::courses = courses;
+}
+
 
 /* Getters */
 
@@ -47,6 +51,10 @@ const string &Student::getGroup() const {
 
 bool Student::isStudyOffline() const {
     return studyOffline;
+}
+
+const set<const Course *> &Student::getCourses() const {
+    return courses;
 }
 
 

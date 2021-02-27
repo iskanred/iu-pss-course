@@ -5,9 +5,9 @@ using namespace std;
 
 /* Constructor */
 
-User::User(string name, string surname, string tgAlias, AccessLevel accessLevel) :
+User::User(string name, string surname, string tgAlias, const AccessLevel& accessLevel) :
         name(move(name)), surname(move(surname)), tgAlias(move(tgAlias)),
-        accessLevel(accessLevel), universityEmail(generateEmail())
+        accessLevel(&accessLevel), universityEmail(generateEmail())
 { }
 
 
@@ -55,8 +55,8 @@ const string &User::getUniversityEmail() const {
     return universityEmail;
 }
 
-AccessLevel User::getAccessLevel() const {
-    return accessLevel;
+const AccessLevel &User::getAccessLevel() const {
+    return *accessLevel;
 }
 
 
@@ -83,6 +83,6 @@ string User::generateEmail() const {
 
 /* UserAccessUpdater-class */
 
-void UserAccessUpdater::updateAccess(User &user, AccessLevel accessLevel) {
-    user.accessLevel = accessLevel;
+void UserAccessUpdater::updateAccess(User &user, const AccessLevel& accessLevel) {
+    user.accessLevel = &accessLevel;
 }

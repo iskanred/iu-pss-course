@@ -23,11 +23,11 @@ protected:
 
     std::vector<const User*> grantedAccessUsers;
 
-    AccessLevel accessLevel;
+    const AccessLevel* accessLevel;
 
 
     /* Constructor */
-    explicit Room(std::string number, AccessLevel accessLevel);
+    explicit Room(std::string number, const AccessLevel& accessLevel);
 
 public:
     /* Public member-functions */
@@ -74,7 +74,7 @@ class RoomPropertiesUpdater {
 
     friend class Admin;
 
-    static void updateAccess(Room& room, AccessLevel accessLevel);
+    static void updateAccess(Room& room, const AccessLevel& accessLevel);
 
     static void addGrantedAccessUser(Room& room, const User& user);
 
@@ -85,7 +85,17 @@ class RoomPropertiesUpdater {
     static bool removeGrantedAccessUser(Room& room, const User& user);
 
 public:
+    /* Deleting all possible ways to create an instance of this class */
+
     RoomPropertiesUpdater() = delete;
+
+    ~RoomPropertiesUpdater() = delete;
+
+    // Declaring copy constructor, no move constructor will be generated implicitly
+    RoomPropertiesUpdater(const RoomPropertiesUpdater&) = delete;
+
+    // Declaring copy-assignment-operator, no move-assignment-operator will be generated implicitly
+    RoomPropertiesUpdater& operator=(const RoomPropertiesUpdater&) = delete;
 };
 
 

@@ -4,9 +4,9 @@ using namespace std;
 
 /* Constructor */
 
-LabEmployee::LabEmployee(string name, string surname, string tgAlias, Lab lab, string position) :
+LabEmployee::LabEmployee(string name, string surname, string tgAlias, const Lab& lab, string position) :
     User(move(name), move(surname), move(tgAlias), AccessLevel::YELLOW),
-    lab(lab), position(move(position))
+    lab(&lab), position(move(position))
 { }
 
 
@@ -28,8 +28,8 @@ void LabEmployee::talkWithProfessor(const Professor& professor) const {
 
 /* Setters */
 
-void LabEmployee::changeLab(Lab lab) {
-    LabEmployee::lab = lab;
+void LabEmployee::changeLab(const Lab& lab) {
+    LabEmployee::lab = &lab;
 }
 
 void LabEmployee::setPosition(const string &position) {
@@ -39,8 +39,8 @@ void LabEmployee::setPosition(const string &position) {
 
 /* Getters */
 
-Lab LabEmployee::getLab() const {
-    return lab;
+const Lab &LabEmployee::getLab() const {
+    return *lab;
 }
 
 const string &LabEmployee::getPosition() const {
