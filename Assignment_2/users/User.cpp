@@ -25,6 +25,11 @@ bool User::operator!=(const User &rhs) const {
     return !(rhs == *this);
 }
 
+std::ostream &operator<<(ostream &out, const User &user)  {
+    out << user.toString();
+    return out;
+}
+
 
 /* Setters */
 

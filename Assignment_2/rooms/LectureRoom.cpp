@@ -11,7 +11,7 @@ LectureRoom::LectureRoom(std::string number) :
 /* Public member-functions */
 
 std::string LectureRoom::toString() const {
-    return "Lecture-room (#" + number + ")";
+    return "({Lecture-room} #" + number + ")";
 }
 
 

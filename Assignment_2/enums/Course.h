@@ -80,6 +80,11 @@ public:
     static const Course DATA_STRUCTURES_AND_ALGORITHMS;
 
 
+    /* Overloaded operators */
+
+    friend std::ostream &operator<<(std::ostream &out, const Course &course);
+
+
     /* Public member-functions */
 
     /*

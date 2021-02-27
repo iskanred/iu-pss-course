@@ -66,6 +66,8 @@ public:
 
     bool operator<=(const AccessLevel& rhs) const;
 
+    friend std::ostream &operator<<(std::ostream &out, const AccessLevel &accessLevel);
+
 
     /* Public member-functions */
 

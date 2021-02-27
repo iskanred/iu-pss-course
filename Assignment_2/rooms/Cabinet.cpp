@@ -12,7 +12,7 @@ Cabinet::Cabinet(std::string number, size_t computersNumber) :
 /* Public member-functions */
 
 std::string Cabinet::toString() const {
-    return "Cabinet (#" + number + ")";
+    return "({Cabinet} #" + number + ")";
 }
 
 void Cabinet::addComputers(size_t computersNumber) {

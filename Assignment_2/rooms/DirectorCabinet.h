@@ -15,7 +15,7 @@ class DirectorCabinet : public Room {
     friend class DirectorSetter; // a director has access to private members of the director cabinet
 
 
-    const Director* director;
+    Director *director;
 
 public:
     /* Constructors */
@@ -61,7 +61,7 @@ class DirectorSetter {
 
     friend class Director;
 
-    static bool setDirectorToCabinet(const Director& director, DirectorCabinet& cabinet);
+    static bool setDirectorToCabinet(Director* director, DirectorCabinet& cabinet);
 
 public:
     /* Deleting all possible ways to create an instance of this class */

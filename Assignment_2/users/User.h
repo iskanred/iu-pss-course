@@ -42,6 +42,8 @@ public:
 
     bool operator!=(const User &rhs) const;
 
+    friend std::ostream &operator<<(std::ostream &out, const User& user);
+
 
     /* Abstract member-functions */
 

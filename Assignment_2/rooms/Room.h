@@ -30,6 +30,11 @@ protected:
     explicit Room(std::string number, const AccessLevel& accessLevel);
 
 public:
+    /* Overloaded Operators */
+
+    friend std::ostream &operator<<(std::ostream &out, const Room& room);
+
+
     /* Public member-functions */
 
     [[nodiscard]] virtual std::string toString() const = 0; // abstract

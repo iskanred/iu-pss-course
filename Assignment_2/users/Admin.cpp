@@ -17,7 +17,7 @@ void Admin::saySomething() const {
 }
 
 string Admin::toString() const {
-    return "Admin " + getFullName();
+    return "{Admin} " + getFullName();
 }
 
 void Admin::setAccessLevelForUser(User &user, const AccessLevel& accessLevel) const {

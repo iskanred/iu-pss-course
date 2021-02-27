@@ -19,7 +19,7 @@ void Student::saySomething() const {
 }
 
 string Student::toString() const {
-    return "Student " + getFullName();
+    return "{Student} " + getFullName();
 }
 
 void Student::talkWithProfessor(const Professor& professor) const {

@@ -33,11 +33,11 @@ class Lab final {
     };
 
 
-    const LabType lab;
+    const LabType labType;
 
 
     /** Constructor for only in-class instances  */
-    explicit Lab(LabType lab);
+    explicit Lab(LabType labType);
 
 public:
     // Declaring copy constructor, no move constructor will be generated implicitly
@@ -56,6 +56,11 @@ public:
     static const Lab SOFTWARE_ENGINEERING;
     static const Lab OPERATING_SYSTEMS;
     static const Lab ROBOTICS;
+
+
+    /* Overloaded operators */
+
+    friend std::ostream &operator<<(std::ostream &out, const Lab &lab);
 
 
     /* Public member-functions */

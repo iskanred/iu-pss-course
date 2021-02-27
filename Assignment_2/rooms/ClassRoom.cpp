@@ -12,7 +12,7 @@ ClassRoom::ClassRoom(std::string number, size_t capacity) :
 /* Public member-functions */
 
 std::string ClassRoom::toString() const {
-    return "Class-room (#" + number + ")";
+    return "({Class-room} #" + number + ")";
 }
 
 

@@ -18,14 +18,22 @@ const Lab Lab::ROBOTICS = Lab(LabType::ROBOTICS);
 
 /* Constructor */
 
-Lab::Lab(Lab::LabType lab) : lab(lab)
+Lab::Lab(Lab::LabType labType) : labType(labType)
 { }
+
+
+/* Overloaded constructor */
+
+std::ostream &operator<<(std::ostream &out, const Lab &lab)  {
+    out << lab.toString();
+    return out;
+}
 
 
 /* Public member-functions */
 
 std::string Lab::toString() const {
-    switch (lab) {
+    switch (labType) {
         case LabType::DATA_SCIENCE :
             return "DATA_SCIENCE";
 

@@ -12,7 +12,7 @@ ConferenceRoom::ConferenceRoom(std::string number, size_t capacity) :
 /* Public member-functions */
 
 std::string ConferenceRoom::toString() const {
-    return "Conference-room (#" + number + ")";
+    return "({Conference-room} #" + number + ")";
 }
 
 

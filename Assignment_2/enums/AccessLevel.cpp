@@ -45,6 +45,11 @@ bool AccessLevel::operator<=(const AccessLevel &rhs) const {
     return access <= rhs.access;
 }
 
+std::ostream &operator<<(std::ostream &out, const AccessLevel &accessLevel)  {
+    out << accessLevel.toString();
+    return out;
+}
+
 
 /* Public member-functions */
 

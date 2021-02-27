@@ -17,7 +17,7 @@ void Professor::saySomething() const {
 }
 
 string Professor::toString() const {
-    return "Professor " + getFullName();
+    return "{Professor} " + getFullName();
 }
 
 

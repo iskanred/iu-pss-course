@@ -23,9 +23,8 @@ DirectorCabinet::DirectorCabinet(std::string number, Director& director) :
 /* Public member-functions */
 
 std::string DirectorCabinet::toString() const {
-    return "Director-cabinet (#" + number +")";
+    return "({Director-cabinet} #" + number +")";
 }
-
 
 /* Getters */
 
@@ -49,9 +48,9 @@ const Director *DirectorCabinet::getDirector() const {
  *         - 'false' if director hadn't been set to cabinet
  *              (what means that another director has already taken this cabinet
  */
-bool DirectorSetter::setDirectorToCabinet(const Director &director, DirectorCabinet& cabinet) {
-    if (cabinet.director == nullptr) {
-        cabinet.director = &director;
+bool DirectorSetter::setDirectorToCabinet(Director* director, DirectorCabinet& cabinet) {
+    if (cabinet.director == nullptr || director == nullptr) {
+        cabinet.director = director;
         return true;
     }
     return false; // if this is already another director's cabinet

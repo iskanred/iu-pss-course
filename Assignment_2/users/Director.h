@@ -7,8 +7,6 @@
 
 class DirectorCabinet;
 
-class DirectorCabinetSetter;
-
 
 class Director : public User {
 
@@ -20,7 +18,7 @@ class Director : public User {
      */
     bool presentAtUniversity;
 
-    const DirectorCabinet* cabinet;
+    DirectorCabinet* cabinet;
 
 public:
     /* Constructors */
@@ -41,6 +39,8 @@ public:
     void saySomething() const override;
 
     [[nodiscard]] std::string toString() const override;
+
+    void removeCabinet();
 
 
     /* Setters */

@@ -17,7 +17,7 @@ void LabEmployee::saySomething() const {
 }
 
 string LabEmployee::toString() const {
-    return "Lab employee " + getFullName();
+    return "{Lab employee} " + getFullName();
 }
 
 void LabEmployee::talkWithProfessor(const Professor& professor) const {

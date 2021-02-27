@@ -34,6 +34,14 @@ const Course Course::THEORETICAL_COMPUTER_SCIENCE = Course(CourseType::THEORETIC
 const Course Course::DATA_STRUCTURES_AND_ALGORITHMS = Course(CourseType::DATA_STRUCTURES_AND_ALGORITHMS);
 
 
+/* Overloaded Operators */
+
+std::ostream &operator<<(std::ostream &out, const Course &course) {
+    out << course.toString();
+    return out;
+}
+
+
 /* Public member-functions */
 
 std::string Course::toString() const {

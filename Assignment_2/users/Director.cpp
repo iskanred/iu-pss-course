@@ -14,7 +14,7 @@ Director::Director(string name, string surname, string tgAlias, DirectorCabinet 
         presentAtUniversity(true), cabinet(&cabinet)
 {
     // if this is already another director's cabinet
-    if (!DirectorSetter::setDirectorToCabinet(*this, cabinet))
+    if (!DirectorSetter::setDirectorToCabinet(this, cabinet))
     {
         cout << "Director " << getFullName()
                 << " has tried to take " << cabinet.toString()
@@ -31,7 +31,16 @@ void Director::saySomething() const {
 }
 
 string Director::toString() const {
-    return "Director " + getFullName();
+    return "{Director} " + getFullName();
+}
+
+void Director::removeCabinet() {
+    DirectorSetter::setDirectorToCabinet(nullptr, *cabinet);
+
+    cout << cabinet->toString() << " is not "
+            << toString() << "'s cabinet more" << endl;
+
+    cabinet = nullptr;
 }
 
 
@@ -42,8 +51,15 @@ void Director::setPresentAtUniversity(bool presentAtUniversity) {
 }
 
 void Director::setCabinet(DirectorCabinet& cabinet) {
-    if (DirectorSetter::setDirectorToCabinet(*this, cabinet)) {
+    if (DirectorSetter::setDirectorToCabinet(this, cabinet))
+    {
+        removeCabinet();
+
         Director::cabinet = &cabinet;
+
+        cout << toString()
+             << " has taken " << cabinet.toString() << endl;
+
         return;
     }
 

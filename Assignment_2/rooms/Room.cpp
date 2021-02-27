@@ -21,6 +21,13 @@ auto Room::iteratorToUser(const User &user) const {
                         grantedAccessUsers.end(), findingFunction);
 }
 
+/* Overloaded operators */
+
+std::ostream &operator<<(std::ostream &out, const Room &room) {
+    out << room.toString();
+    return out;
+}
+
 
 /* Public member-functions */
 
