@@ -14,29 +14,41 @@ const AccessLevel AccessLevel::RED = AccessLevel(AccessType::RED);
 
 /* Constructor */
 
-AccessLevel::AccessLevel(AccessLevel::AccessType access) {
-    AccessLevel::access = access;
+AccessLevel::AccessLevel(AccessLevel::AccessType access) :
+    access(access)
+{ }
+
+
+/* Overloaded Operators */
+
+bool AccessLevel::operator==(const AccessLevel &rhs) const {
+    return access == rhs.access;
+}
+
+bool AccessLevel::operator!=(const AccessLevel &rhs) const {
+    return !(rhs == *this);
+}
+
+bool AccessLevel::operator>(const AccessLevel& rhs) const {
+    return access > rhs.access;
+}
+
+bool AccessLevel::operator<(const AccessLevel& rhs) const {
+    return access < rhs.access;
+}
+
+bool AccessLevel::operator>=(const AccessLevel &rhs) const {
+    return access >= rhs.access;
+}
+
+bool AccessLevel::operator<=(const AccessLevel &rhs) const {
+    return access <= rhs.access;
 }
 
 
 /* Public member-functions */
 
-AccessLevel AccessLevel::getUpperAccessLevel() {
-    switch (access) {
-        case AccessType::NO_LEVEL :
-            return GREEN;
-
-        case AccessType::GREEN :
-            return YELLOW;
-
-        case AccessType::YELLOW :
-        case AccessType::RED :
-            return RED;
-    }
-}
-
-
-std::string AccessLevel::toString() {
+std::string AccessLevel::toString() const {
     switch (access) {
         case AccessType::NO_LEVEL :
             return "NO_LEVEL";

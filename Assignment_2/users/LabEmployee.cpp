@@ -13,12 +13,16 @@ LabEmployee::LabEmployee(string name, string surname, string tgAlias, Lab lab, s
 /* Public member-functions */
 
 void LabEmployee::saySomething() const {
-    cout << "Lab employee: " << getFullName() << ": Our lab is the best one at university" << endl;
+    cout << toString() << ": Our lab is the best one at university" << endl;
+}
+
+string LabEmployee::toString() const {
+    return "Lab employee " + getFullName();
 }
 
 void LabEmployee::talkWithProfessor(const Professor& professor) const {
     professor.saySomething();
-    cout << "Lab employee " << getFullName() << ": Ha-ha-ha" << endl;
+    cout << toString() << ": Ha-ha-ha" << endl;
 }
 
 

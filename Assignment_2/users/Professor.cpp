@@ -13,7 +13,11 @@ Professor::Professor(string name, string surname, string tgAlias, string favorit
 /* Public member-functions */
 
 void Professor::saySomething() const {
-    cout << "Professor " << getFullName() << ": " << favoriteJoke << endl;
+    cout << toString() << getFullName() << ": " << favoriteJoke << endl;
+}
+
+string Professor::toString() const {
+    return "Professor " + getFullName();
 }
 
 

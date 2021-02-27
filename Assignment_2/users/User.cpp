@@ -11,6 +11,21 @@ User::User(string name, string surname, string tgAlias, AccessLevel accessLevel)
 { }
 
 
+/* Overloaded Operators */
+
+bool User::operator==(const User &rhs) const {
+    return (this == &rhs) ||
+            (name == rhs.name &&
+            surname == rhs.surname &&
+            tgAlias == rhs.tgAlias &&
+            accessLevel == rhs.accessLevel);
+}
+
+bool User::operator!=(const User &rhs) const {
+    return !(rhs == *this);
+}
+
+
 /* Setters */
 
 void User::setTgAlias(const string &tgAlias) {
@@ -60,15 +75,14 @@ string User::generateEmail() const {
     string surnameLowerCase = toLowerCase(surname);
 
     string email = string(1, tolower(name[0])) + "."
-            + surnameLowerCase + "@innopolis.ru";
+                   + surnameLowerCase + "@innopolis.ru";
 
     return email;
 }
 
 
-
 /* UserAccessUpdater-class */
 
-void UserAccessUpdater::updateAccess(User &user) {
-    user.accessLevel = user.getAccessLevel().getUpperAccessLevel();
+void UserAccessUpdater::updateAccess(User &user, AccessLevel accessLevel) {
+    user.accessLevel = accessLevel;
 }

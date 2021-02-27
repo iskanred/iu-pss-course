@@ -2,7 +2,7 @@
 #define ASSIGNMENT_2_USER_H
 
 #include <string>
-#include <iostream> // is necessary for f.e. method saySomething()
+#include <iostream>
 #include "../enums/AccessLevel.h"
 
 
@@ -11,9 +11,7 @@ class Admin;
 class UserAccessUpdater;
 
 
-/**
- * Abstract class User
- */
+/** Abstract class User */
 class User {
 
     friend class UserAccessUpdater;
@@ -26,9 +24,9 @@ protected:
 
     std::string tgAlias; // telegram alias
 
-    std::string universityEmail;
-
     AccessLevel accessLevel;
+
+    std::string universityEmail;
 
 
     /* Constructor */
@@ -38,9 +36,18 @@ protected:
          AccessLevel accessLevel);
 
 public:
+    /* Overloaded Operators */
+
+    bool operator==(const User &rhs) const;
+
+    bool operator!=(const User &rhs) const;
+
+
     /* Abstract member-functions */
 
     virtual void saySomething() const = 0;
+
+    [[nodiscard]] virtual std::string toString() const = 0;
 
 
     /* Setters */
@@ -76,18 +83,25 @@ private:
  * UserAccessUpdater class
  *  is necessary to update access for some user by admin
  *
- * This class is an interface between User-class and its child: Admin-class
+ * This class is an interface between User-class
+ *  and its child: Admin-class
  *
- * Admin should have access to change user's level of access, but other children shouldn't,
- *  so this updater-function must be private and Admin can be friend-class for User-class
- * At the same time Admin shouldn't have access to other private entities of User-class, so
- *  interface representing by UserAccessUpdater-class can solve this problem
+ * Admin should have access to change user's level of access,
+ *  but other children shouldn't, so this updater-function
+ *  must be private and Admin can be friend-class for User-class
+ *
+ * However, Admin shouldn't have access to other private
+ *  entities of User-class, so this interface helps them
+ *  interact saving encapsulation
  */
 class UserAccessUpdater {
 
     friend class Admin;
 
-    static void updateAccess(User& user);
+    static void updateAccess(User& user, AccessLevel accessLevel);
+
+public:
+    UserAccessUpdater() = delete;
 };
 
 #endif //ASSIGNMENT_2_USER_H

@@ -2,8 +2,8 @@
 #define ASSIGNMENT_2_LABEMPLOYEE_H
 
 #include "User.h"
-#include "../enums/Lab.h"
 #include "Professor.h"
+#include "../enums/Lab.h"
 
 
 class LabEmployee : public User {
@@ -24,6 +24,8 @@ public:
     /* Public member-functions */
 
     void saySomething() const override;
+
+    [[nodiscard]] std::string toString() const override;
 
     void talkWithProfessor(const Professor& professor) const;
 

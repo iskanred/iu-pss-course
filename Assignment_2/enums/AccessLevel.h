@@ -8,7 +8,7 @@
  * An attempt to create a powerful enum class as in Java
  *  with methods and fields
  */
-class AccessLevel {
+class AccessLevel final {
 
     /** Inner enum */
     enum class AccessType {
@@ -18,9 +18,9 @@ class AccessLevel {
         RED
     };
 
-    /* Fields */
 
     AccessType access;
+
 
     /** Constructor for only in-class instances  */
     explicit AccessLevel(AccessType access);
@@ -28,25 +28,34 @@ class AccessLevel {
 public:
     /* Constants */
 
-    /** These constant are the only instances of these class that can be used in a program */
     static const AccessLevel NO_LEVEL;
     static const AccessLevel GREEN;
     static const AccessLevel YELLOW;
     static const AccessLevel RED;
 
 
-    /* Public member-functions */
+    /* Overloaded Operators */
 
-    /**
-     * @return an upper (by 1) level of access
-     * If it is already max (RED), then return RED
-     */
-    AccessLevel getUpperAccessLevel();
+    bool operator==(const AccessLevel &rhs) const;
+
+    bool operator!=(const AccessLevel &rhs) const;
+
+    bool operator>(const AccessLevel& rhs) const;
+
+    bool operator<(const AccessLevel& rhs) const;
+
+    bool operator>=(const AccessLevel& rhs) const;
+
+    bool operator<=(const AccessLevel& rhs) const;
+
+
+    /* Public member-functions */
 
     /*
      * @return string-representation (actually just a name) of level of access
      */
-    std::string toString();
+    [[nodiscard]] std::string toString() const;
 };
+
 
 #endif //ASSIGNMENT_2_ACCESSLEVEL_H

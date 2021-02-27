@@ -24,6 +24,8 @@ public:
 
     void saySomething() const override;
 
+    [[nodiscard]] std::string toString() const override;
+
     void talkWithProfessor(const Professor& professor) const;
 
 

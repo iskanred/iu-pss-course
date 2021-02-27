@@ -13,7 +13,11 @@ Director::Director(string name, string surname, string tgAlias, bool presentAtUn
 /* Public member-functions */
 
 void Director::saySomething() const {
-    cout << "We need to decrease a scholarship for students!" << endl;
+    cout << toString() << ": We need to decrease a scholarship for students!" << endl;
+}
+
+string Director::toString() const {
+    return "Director " + getFullName();
 }
 
 

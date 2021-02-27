@@ -15,12 +15,16 @@ Student::Student(string name, string surname, string tgAlias, string group, bool
 /* Public member-functions */
 
 void Student::saySomething() const {
-    cout << "Student " << getFullName() << ": Increase a scholarship, please!" << endl;
+    cout << toString() << ": Increase a scholarship, please!" << endl;
+}
+
+string Student::toString() const {
+    return "Student " + getFullName();
 }
 
 void Student::talkWithProfessor(const Professor& professor) const {
-    cout << "Professor " << professor.getFullName()  << ": See you on retake, " << name << endl;
-    cout << "Student " << getFullName() << ": Please, professor, give me C" << endl;
+    cout << professor.toString() << ": See you on retake, " << name << endl;
+    cout << toString() << ": Please, professor, give me C" << endl;
 }
 
 

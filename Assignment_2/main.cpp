@@ -1,22 +1,35 @@
+#include "users/Professor.h"
 #include "users/Student.h"
 #include "users/LabEmployee.h"
 #include "users/Admin.h"
+#include "rooms/ClassRoom.h"
+#include "rooms/DirectorCabinet.h"
 
 /// For test
 
 int main() {
 
     Professor professor("Adil", "Khan", "khan", "!",
-                      {"LinAl-1", "Calculus", "ML-2"});
+                      {"DSA", "ML-2"});
 
     Student student("Iskander", "Nafikov", "iskanred", "BS20-02", true);
 
-    LabEmployee labEmployee("Oleg", "Bulichev", "bulich", Lab::CYBER_SECURITY, "1");
+    LabEmployee labEmployee("Oleg", "Bulichev", "bulich", Lab::CYBER_SECURITY, "Product manager");
 
 
-    Admin admin("Kulich", "Ebanov", "kulich", "123");
+    Admin admin("Maxim", "Indusov", "max_indus", "12345678");
 
-    admin.upAccess(student);
+    admin.setAccessLevelForUser(professor, AccessLevel::RED);
+
+    DirectorCabinet directorCabinet("A123");
+
+    directorCabinet.openByUser(admin);
+
+    directorCabinet.openByUser(professor);
+
+    admin.setAccessLevelForUser(professor, AccessLevel::YELLOW);
+
+    directorCabinet.openByUser(professor);
 
     return 0;
 }

@@ -8,7 +8,7 @@
  * An attempt to create a powerful enum class as in Java
  *  with methods and fields
  */
-class Lab {
+class Lab final {
 
     /** Inner enum */
     enum class LabType {
@@ -20,8 +20,6 @@ class Lab {
         ROBOTICS
     };
 
-
-    /* Fields */
 
     LabType lab;
 
@@ -47,7 +45,7 @@ public:
      * @return string-representation (actually just a name) of level of access
      */
     std::string toString();
-
 };
+
 
 #endif //ASSIGNMENT_2_LAB_H

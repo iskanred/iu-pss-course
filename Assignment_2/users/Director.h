@@ -23,6 +23,8 @@ public:
 
     void saySomething() const override;
 
+    [[nodiscard]] std::string toString() const override;
+
 
     /* Setters */
 
@@ -34,5 +36,6 @@ public:
     [[nodiscard]] bool isPresentAtUniversity() const;
 
 };
+
 
 #endif //ASSIGNMENT_2_DIRECTOR_H

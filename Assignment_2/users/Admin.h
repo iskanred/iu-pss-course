@@ -2,6 +2,7 @@
 #define ASSIGNMENT_2_ADMIN_H
 
 #include "User.h"
+#include "../rooms/Room.h"
 
 
 class Admin : public User {
@@ -17,16 +18,20 @@ public:
 
     void saySomething() const override;
 
+    [[nodiscard]] std::string toString() const override;
 
-    /**
-     * Update access for user on 1 position
-     * F.e. green becomes yellow, yellow becomes red
-     */
-    void upAccess(User& user);
+    void setAccessLevelForUser(User& user, AccessLevel accessLevel) const;
 
-    //void giveAccessForRoom(const User& user, const Room& room);
+    void setAccessLevelForRoom(Room& room, AccessLevel accessLevel) const;
 
-    //void depriveAccessForRoom();
+    void grantUserAccessToRoom(const User& user, Room& room) const;
+
+    void removeGrantedAccessForUserToRoom(const User& user, Room& room) const;
+
+
+    /* Setters */
+
+    void setWiFiPassword(const std::string &wiFiPassword);
 
 
     /* Getters */
@@ -34,5 +39,6 @@ public:
     [[nodiscard]] const std::string &getWiFiPassword() const;
 
 };
+
 
 #endif //ASSIGNMENT_2_ADMIN_H
