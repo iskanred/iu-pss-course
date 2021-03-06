@@ -53,7 +53,8 @@ void Director::setPresentAtUniversity(bool presentAtUniversity) {
 void Director::setCabinet(DirectorCabinet& cabinet) {
     if (DirectorSetter::setDirectorToCabinet(this, cabinet))
     {
-        removeCabinet();
+        if (Director::cabinet != nullptr)
+            removeCabinet();
 
         Director::cabinet = &cabinet;
 

@@ -4,7 +4,7 @@
 /* Constructor */
 
 Cabinet::Cabinet(std::string number, size_t computersNumber) :
-        Room(std::move(number), AccessLevel::RED),
+        Room(std::move(number), AccessLevel::YELLOW),
         computersNumber(computersNumber)
 { }
 

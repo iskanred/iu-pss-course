@@ -40,7 +40,7 @@ void Room::openByUser(const User& user) const {
         return;
     }
 
-    std::cout << user.toString() << " opened the "
+    std::cout << user.toString() << " has opened the "
               << toString() << std::endl;
 }
 

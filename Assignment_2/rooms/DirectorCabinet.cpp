@@ -14,7 +14,7 @@ DirectorCabinet::DirectorCabinet(std::string number)
 { }
 
 DirectorCabinet::DirectorCabinet(std::string number, Director& director) :
-        Room(std::move(number), AccessLevel::RED), director(&director)
+        Room(std::move(number), AccessLevel::RED)
 {
     director.setCabinet(*this);
 }
