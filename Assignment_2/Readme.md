@@ -1,9 +1,18 @@
-cmake_minimum_required(VERSION 3.17)
-project(Assignment_2)
+# Assignemnt 2
 
-set(CMAKE_CXX_STANDARD 17)
+Implementation of access-levels system at a universty
 
-add_executable(Assignment_2
+## System Requirments
+The program was successfully tested on **Windows 10** with **MinGW** compiler. It should work with any other system and other compilers, but there can appear some troubles.
+
+## Tools Requirments
+**C++ 17** |
+**CMake 3.17**
+
+## Project Files
+```     
+        CMakeLists.txt
+
         main.cpp
 
         enums/enums.h
@@ -27,8 +36,6 @@ add_executable(Assignment_2
         rooms/Cabinet.h
         rooms/DirectorCabinet.h
 
-        #=====================
-
         enums/Lab.cpp
         enums/AccessLevel.cpp
         enums/Course.cpp
@@ -46,4 +53,14 @@ add_executable(Assignment_2
         rooms/ConferenceRoom.cpp
         rooms/Cabinet.cpp
         rooms/DirectorCabinet.cpp
-        )
+```
+
+## How to Run?
+
+Compile sourse files ```*.cpp``` with any **C++** compiler or if you have **Cmake** build-tool you can use it to build project. Further, it is easy to open project folder with **CLion** IDE.
+
+## Author
+**Iskander Nafikov BS20-02**
+
+## Documentitation
+All necessary documentation you can find inside the sourse files.
