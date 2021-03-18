@@ -18,6 +18,7 @@ add_executable(Assignment_2
         users/LabEmployee.h
         users/Director.h
         users/Admin.h
+        users/Guest.h
 
         rooms/rooms.h
         rooms/Room.h
@@ -39,6 +40,7 @@ add_executable(Assignment_2
         users/LabEmployee.cpp
         users/Director.cpp
         users/Admin.cpp
+        users/Guest.cpp
 
         rooms/Room.cpp
         rooms/ClassRoom.cpp
