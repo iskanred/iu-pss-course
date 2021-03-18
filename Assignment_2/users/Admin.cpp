@@ -5,16 +5,12 @@ using namespace std;
 /* Constructor */
 
 Admin::Admin(string name, string surname, string tgAlias, string wiFiPassword) :
-    User(move(name), move(surname), move(tgAlias), AccessLevel::RED),
+    UniversityUser(move(name), move(surname), AccessLevel::RED, move(tgAlias)),
     wiFiPassword(move(wiFiPassword))
 { }
 
 
 /* Public member-functions */
-
-void Admin::saySomething() const {
-    cout << toString() << ": if it works correctly, don't touch it, please!" << endl;
-}
 
 string Admin::toString() const {
     return "{Admin} " + getFullName();

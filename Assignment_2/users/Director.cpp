@@ -5,12 +5,12 @@ using namespace std;
 /* Constructors */
 
 Director::Director(string name, string surname, string tgAlias)
-    : User(move(name), move(surname), move(tgAlias), AccessLevel::RED),
+    : UniversityUser(move(name), move(surname), AccessLevel::RED, move(tgAlias)),
         presentAtUniversity(true), cabinet(nullptr)
 { }
 
 Director::Director(string name, string surname, string tgAlias, DirectorCabinet &cabinet)
-    : User(move(name), move(surname), move(tgAlias), AccessLevel::RED),
+    : UniversityUser(move(name), move(surname), AccessLevel::RED, move(tgAlias)),
         presentAtUniversity(true), cabinet(&cabinet)
 {
     // if this is already another director's cabinet
@@ -25,10 +25,6 @@ Director::Director(string name, string surname, string tgAlias, DirectorCabinet 
 
 
 /* Public member-functions */
-
-void Director::saySomething() const {
-    cout << toString() << ": We need to decrease a scholarship for students!" << endl;
-}
 
 string Director::toString() const {
     return "{Director} " + getFullName();

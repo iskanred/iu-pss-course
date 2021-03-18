@@ -1,12 +1,12 @@
 #ifndef ASSIGNMENT_2_STUDENT_H
 #define ASSIGNMENT_2_STUDENT_H
 
-#include "User.h"
-#include "Professor.h"
+#include "UniversityUser.h"
+#include "../enums/Course.h"
 #include <set>
 
 
-class Student : public User {
+class Student : public UniversityUser {
 
     std::string group;
 
@@ -26,11 +26,7 @@ public:
 
     /* Public member-functions */
 
-    void saySomething() const override;
-
-    [[nodiscard]] std::string toString() const override;
-
-    void talkWithProfessor(const Professor& professor) const;
+    [[nodiscard]] std::string toString() const override;\
 
 
     /* Setters */

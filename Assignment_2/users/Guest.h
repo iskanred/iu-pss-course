@@ -4,18 +4,16 @@
 #include "Director.h"
 
 
-class Guest : User {
+class Guest : public User {
 
 
 
 public:
     /* Constructor */
-    Guest();
+    //Guest(std::string name, std::string surname, const AccessLevel& accessLevel);
 
 
     /* Public member-functions */
-
-    void saySomething() const override;
 
     [[nodiscard]] std::string toString() const override;
 

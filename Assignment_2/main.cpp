@@ -263,25 +263,6 @@ int main()
     println;
 
 
-    // Talk space
-
-    students[7].saySomething();
-    professors[0].saySomething();
-    employees[6].saySomething();
-    admins[0].saySomething();
-    directors[1].saySomething();
-
-    println;
-
-    students[8].talkWithProfessor(professors[1]);
-
-    println;
-
-    employees[7].talkWithProfessor(professors[2]);
-
-    println;
-
-
     // Other features
 
     directors[0].setCabinet(directorCabinet2);
@@ -318,6 +299,16 @@ int main()
             "University e-mail: " << employees[0].getUniversityEmail() << endl <<
             "Lab: " << employees[0].getLab().toString() << endl <<
             "Position: " << employees[0].getPosition() << endl;
+
+
+    //=============================================================================
+    //=============================================================================
+    //=============================================================================
+
+    Admin a1("name", "surname", "t", wiFiPassword);
+    Admin a2("name", "surname", "t", wiFiPassword);
+
+    cout << (a1 != a2);
 
     return 0;
 }

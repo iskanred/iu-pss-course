@@ -5,16 +5,12 @@ using namespace std;
 /* Constructor */
 
 Professor::Professor(string name, string surname, string tgAlias, string favoriteJoke, set<const Course*> courses) :
-    User(move(name), move(surname), move(tgAlias), AccessLevel::YELLOW),
+    UniversityUser(move(name), move(surname), AccessLevel::YELLOW, move(tgAlias)),
     favoriteJoke(move(favoriteJoke)), courses(move(courses))
 { }
 
 
 /* Public member-functions */
-
-void Professor::saySomething() const {
-    cout << toString() << ": " << favoriteJoke << endl;
-}
 
 string Professor::toString() const {
     return "{Professor} " + getFullName();

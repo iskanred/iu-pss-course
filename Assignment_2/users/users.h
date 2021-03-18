@@ -23,5 +23,7 @@
 
 #include "Student.h"
 
+#include "Guest.h"
+
 
 #endif //ASSIGNMENT_2_USERS_H

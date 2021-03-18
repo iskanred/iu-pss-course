@@ -13,12 +13,13 @@ add_executable(Assignment_2
 
         users/users.h
         users/User.h
+        users/UniversityUser.h
+        users/Guest.h
         users/Student.h
         users/Professor.h
         users/LabEmployee.h
         users/Director.h
         users/Admin.h
-        users/Guest.h
 
         rooms/rooms.h
         rooms/Room.h
@@ -35,12 +36,13 @@ add_executable(Assignment_2
         enums/Course.cpp
 
         users/User.cpp
+        users/UniversityUser.cpp
+        users/Guest.cpp
         users/Student.cpp
         users/Professor.cpp
         users/LabEmployee.cpp
         users/Director.cpp
         users/Admin.cpp
-        users/Guest.cpp
 
         rooms/Room.cpp
         rooms/ClassRoom.cpp
