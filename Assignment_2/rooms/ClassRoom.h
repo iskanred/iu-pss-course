@@ -14,7 +14,7 @@ class ClassRoom : public Room {
 
 public:
     /* Constructor */
-    explicit ClassRoom(std::string number, size_t capacity);
+    explicit ClassRoom(std::string number, short floor, size_t capacity);
 
 
     /* Public member-functions */

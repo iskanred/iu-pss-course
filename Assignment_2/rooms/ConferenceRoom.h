@@ -10,7 +10,7 @@ class ConferenceRoom : public Room {
 
 public:
     /* Constructor */
-    explicit ConferenceRoom(std::string number, size_t capacity);
+    explicit ConferenceRoom(std::string number, short floor, size_t capacity);
 
 
     /* Public member-functions */

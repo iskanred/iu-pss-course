@@ -20,9 +20,9 @@ class DirectorCabinet : public Room {
 public:
     /* Constructors */
 
-    explicit DirectorCabinet(std::string number);
+    explicit DirectorCabinet(std::string number, short floor);
 
-    DirectorCabinet(std::string number, Director& director);
+    DirectorCabinet(std::string number, short floor, Director& director);
 
 
     /* Public member-functions */

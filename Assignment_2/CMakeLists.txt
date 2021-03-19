@@ -4,7 +4,8 @@ project(Assignment_2)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Assignment_2
-        main.cpp
+
+        io/Console.h
 
         enums/enums.h
         enums/Lab.h
@@ -30,6 +31,10 @@ add_executable(Assignment_2
         rooms/DirectorCabinet.h
 
         #=====================
+
+        main.cpp
+
+        io/Console.cpp
 
         enums/Lab.cpp
         enums/AccessLevel.cpp

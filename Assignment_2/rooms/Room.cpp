@@ -5,8 +5,8 @@
 
 /* Constructor */
 
-Room::Room(std::string number, const AccessLevel& accessLevel) :
-    number(std::move(number)), accessLevel(&accessLevel)
+Room::Room(std::string number, short floor, const AccessLevel& accessLevel) :
+    number(std::move(number)), floor(floor), accessLevel(&accessLevel)
 { }
 
 
@@ -50,6 +50,10 @@ bool Room::hasUserGrantedAccess(const User &user) const {
 
 
 /* Getters */
+
+short Room::getFloor() const {
+    return floor;
+}
 
 const std::string &Room::getNumber() const {
     return number;

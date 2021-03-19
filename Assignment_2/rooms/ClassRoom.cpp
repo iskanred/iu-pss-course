@@ -3,8 +3,8 @@
 
 /* Constructor */
 
-ClassRoom::ClassRoom(std::string number, size_t capacity) :
-    Room(std::move(number), AccessLevel::GREEN),
+ClassRoom::ClassRoom(std::string number, short floor, size_t capacity) :
+    Room(std::move(number), floor, AccessLevel::GREEN),
     capacity(capacity), markersNumber(FULL_MARKERS_NUMBER)
 { }
 

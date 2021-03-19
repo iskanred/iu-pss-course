@@ -10,7 +10,7 @@ class Cabinet : public Room {
 
 public:
     /* Constructor */
-    explicit Cabinet(std::string number, size_t computersNumber);
+    explicit Cabinet(std::string number, short floor, size_t computersNumber);
 
 
     /* Public member-functions */

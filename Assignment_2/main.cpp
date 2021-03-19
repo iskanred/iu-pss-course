@@ -145,21 +145,21 @@ int main()
 
     /* Rooms declaration */
 
-    ClassRoom classRoom1("301", 12U);
-    ClassRoom classRoom2("303", 20U);
+    ClassRoom classRoom1("301", 3, 12U);
+    ClassRoom classRoom2("303", 3, 20U);
 
-    ConferenceRoom conferenceRoom("C-3", 5);
+    ConferenceRoom conferenceRoom("C-3", 5, 5);
 
-    LectureRoom lectureRoom1("106");
-    LectureRoom lectureRoom2("108");
+    LectureRoom lectureRoom1("106",1);
+    LectureRoom lectureRoom2("108",1);
 
-    Cabinet cabinet1("P-19", 1U);
-    Cabinet cabinet2("L-8", 8U);
+    Cabinet cabinet1("P-19", 2, 1U);
+    Cabinet cabinet2("L-8", 4, 8U);
 
     println;
 
-    DirectorCabinet directorCabinet1("D-1", directors[0]);
-    DirectorCabinet directorCabinet2("D-2", directors[1]);
+    DirectorCabinet directorCabinet1("D-1", 4, directors[0]);
+    DirectorCabinet directorCabinet2("D-2", 4, directors[1]);
 
 
     /* Actions */
@@ -305,10 +305,10 @@ int main()
     //=============================================================================
     //=============================================================================
 
-    Admin a1("name", "surname", "t", wiFiPassword);
-    Admin a2("name", "surname", "t", wiFiPassword);
-
-    cout << (a1 != a2);
+//    Admin a1("name", "surname", "t", wiFiPassword);
+//    Admin a2("name", "surname", "t", wiFiPassword);
+//
+//    cout << (a1 != a2);
 
     return 0;
 }
