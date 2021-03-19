@@ -1,4 +1,5 @@
 #include "Director.h"
+#include "../io/Console.h"
 using namespace std;
 
 
@@ -14,12 +15,8 @@ Director::Director(string name, string surname, string tgAlias, DirectorCabinet 
         presentAtUniversity(true), cabinet(&cabinet)
 {
     // if this is already another director's cabinet
-    if (!DirectorSetter::setDirectorToCabinet(this, cabinet))
-    {
-        cout << "Director " << getFullName()
-                << " has tried to take " << cabinet.toString()
-                << ", but this cabinet is already taken by "
-                << cabinet.getDirector()->toString() << endl;
+    if (!DirectorSetter::setDirectorToCabinet(this, cabinet)) {
+        Console::printDirectorTakeCabinetFailure(*this, cabinet);
     }
 }
 
@@ -31,10 +28,14 @@ string Director::toString() const {
 }
 
 void Director::removeCabinet() {
+    if (cabinet == nullptr) {
+        Console::printDirectorRemoveCabinetFailure(*this);
+        return;
+    }
+
     DirectorSetter::setDirectorToCabinet(nullptr, *cabinet);
 
-    cout << cabinet->toString() << " is not "
-            << toString() << "'s cabinet more" << endl;
+    Console::printDirectorRemoveCabinetSuccess(*this, *cabinet);
 
     cabinet = nullptr;
 }
@@ -54,17 +55,13 @@ void Director::setCabinet(DirectorCabinet& cabinet) {
 
         Director::cabinet = &cabinet;
 
-        cout << toString()
-             << " has taken " << cabinet.toString() << endl;
+        Console::printDirectorTakeCabinetSuccess(*this, cabinet);
 
         return;
     }
 
     // if this is already another director's cabinet
-    cout << toString()
-            << " has tried to take " << cabinet.toString()
-            << ", but this cabinet is already taken by "
-            << cabinet.getDirector()->toString() << endl;
+    Console::printDirectorTakeCabinetFailure(*this, cabinet);
 }
 
 

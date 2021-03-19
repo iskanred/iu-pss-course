@@ -43,6 +43,8 @@ public:
 
     void openByUser(const User& user) const;
 
+    [[nodiscard]] bool hasUserDefaultAccess(const User& user) const;
+
     [[nodiscard]] bool hasUserGrantedAccess(const User& user) const;
 
 

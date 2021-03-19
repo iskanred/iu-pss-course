@@ -2,7 +2,6 @@
 #define ASSIGNMENT_2_USER_H
 
 #include <string>
-#include <iostream>
 #include "../enums/AccessLevel.h"
 
 

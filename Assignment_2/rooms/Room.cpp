@@ -1,5 +1,6 @@
 #include "Room.h"
-#include <iostream>
+#include "../io/Console.h"
+
 #include <algorithm>
 
 
@@ -32,16 +33,17 @@ std::ostream &operator<<(std::ostream &out, const Room &room) {
 /* Public member-functions */
 
 void Room::openByUser(const User& user) const {
-    if (user.getAccessLevel() < *accessLevel &&
-        !hasUserGrantedAccess(user))
+    if (!hasUserDefaultAccess(user) && !hasUserGrantedAccess(user))
     {
-        std::cout << user.toString() << " cannot open the "
-                    << toString() << std::endl;
+        Console::printUserOpenRoomFailure(user, *this);
         return;
     }
 
-    std::cout << user.toString() << " has opened the "
-              << toString() << std::endl;
+    Console::printUserOpenRoomSuccess(user, *this);
+}
+
+bool Room::hasUserDefaultAccess(const User &user) const {
+    return user.getAccessLevel() < *accessLevel;
 }
 
 bool Room::hasUserGrantedAccess(const User &user) const {
@@ -86,5 +88,6 @@ bool RoomPropertiesUpdater::removeGrantedAccessUser(Room& room, const User &user
         return false;
 
     room.grantedAccessUsers.erase(it);
+
     return true;
 }
