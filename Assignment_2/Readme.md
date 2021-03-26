@@ -1,9 +1,10 @@
 # Assignemnt 2 & 3
 
-Implementation of access-levels system at a universty
+Implementation of access-levels system at a university
 
 ## System Requirments
 The program was successfully tested on **Windows 10** with **MinGW** compiler. It should work with any other system and other compilers, but there can appear some troubles.
+It might not work with some versions of **MinGW** on **Windows** system due to the threads mechanism.
 
 ## Tools Requirments
 **C++ 17** |
@@ -83,4 +84,4 @@ Compile source files ```*.cpp``` with any **C++** compiler or if you have **Cmak
 **Iskander Nafikov BS20-02**
 
 ## Documentation
-All necessary documentation you can find inside the sourse files.
+All necessary documentation you can find inside the source files.
