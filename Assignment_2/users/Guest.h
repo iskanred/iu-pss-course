@@ -6,11 +6,18 @@
 
 class Guest : public User {
 
-
+    std::string visitPurpose;
 
 public:
     /* Constructor */
-    //Guest(std::string name, std::string surname, const AccessLevel& accessLevel);
+    Guest(std::string name,
+          std::string surname,
+          std::string visitPurpose);
+
+
+    /* Overloaded operators */
+
+    bool operator==(const User &rhs) const override;
 
 
     /* Public member-functions */
@@ -20,12 +27,12 @@ public:
 
     /* Setters */
 
-
+    void setVisitPurpose(const std::string &visitPurpose);
 
 
     /* Getters */
 
-
+    [[nodiscard]] const std::string &getVisitPurpose() const;
 };
 
 

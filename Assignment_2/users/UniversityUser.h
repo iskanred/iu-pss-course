@@ -4,8 +4,6 @@
 
 #include "User.h"
 #include <string>
-#include <cctype>
-#include "typeindex"
 
 
 class UniversityUser : public User {

@@ -8,15 +8,18 @@ using namespace std;
  * ==============================================
  * Innopolis University
  * PSS-II course
- * Assignment-2
+ * Assignment (2 & 3)
  *
  * Student: Iskander Nafikov BS20-02
  * TA: Mike Ivanov
  * ==============================================
- * This program implements a system of access level
- *  at a university
+ * This program implements a system of access levels
+ *  for users to rooms at a university
  * ==============================================
  * By default:
+ * [NO_LEVEL] < [BLUE] < [GREEN] < [YELLOW] < [RED]
+ *
+ * Guests have [BLUE] access level
  * Students have [GREEN] access level
  * Professors have [YELLOW] access level
  * Lab employees have [YELLOW] access level
@@ -24,8 +27,8 @@ using namespace std;
  * Directors have [RED] access level
  *
  * Class-rooms have [GREEN] access level
- * Conference-rooms have [GREEN] access level
- * Lecture-rooms have [YELLOW] access level
+ * Conference-rooms on the 1st floor have [BLUE] access level, or [GREEN] otherwise
+ * Lecture-rooms on the 1st floor have [BLUE] access level, or [YELLOW] otherwise
  * Cabinets have [YELLOW] access level
  * Director-cabinets have [RED] access level
  * ==============================================
@@ -40,14 +43,17 @@ using namespace std;
  * 2) Lab
  * 3) Course
  * ==============================================
- * There are 3 packages:
- * 1) enums.h (includes all files of "enums")
- * 2) rooms.h (includes all files of rooms)
- * 3) users.h (includes all files of users)
+ * There are 5 package-files:
+ * 1) emergencies.h (includes all files from "emergency"-directory)
+ * 2) enums.h (includes all files from "enums"-directory)
+ * 3) rooms.h (includes all files from "rooms"-directory)
+ * 4) users.h (includes all files from "users"-directory)
+ * 5) io.h (includes all files from "io"-directory)
  * ==============================================
  */
 
 
+#include "emergency/emergencies.h"
 #include "enums/enums.h"
 #include "rooms/rooms.h"
 #include "users/users.h"
@@ -55,6 +61,8 @@ using namespace std;
 
 int main()
 {
+    Emergency::listenForEmergency(); // new
+
     const string wiFiPassword = "12345678";
 
     /* Courses of second-semester bachelor students */
@@ -148,7 +156,9 @@ int main()
     ClassRoom classRoom1("301", 3, 12U);
     ClassRoom classRoom2("303", 3, 20U);
 
-    ConferenceRoom conferenceRoom("C-3", 5, 5);
+    ConferenceRoom conferenceRoom1("C-3", 1, 5);
+    ConferenceRoom conferenceRoom2("C-1", 5, 4);
+
 
     LectureRoom lectureRoom1("106",1);
     LectureRoom lectureRoom2("108",1);
@@ -176,11 +186,11 @@ int main()
 
     println;
 
-    conferenceRoom.openByUser(students[1]);
-    conferenceRoom.openByUser(professors[1]);
-    conferenceRoom.openByUser(employees[1]);
-    conferenceRoom.openByUser(directors[1]);
-    conferenceRoom.openByUser(admins[1]);
+    conferenceRoom1.openByUser(students[1]);
+    conferenceRoom1.openByUser(professors[1]);
+    conferenceRoom1.openByUser(employees[1]);
+    conferenceRoom1.openByUser(directors[1]);
+    conferenceRoom1.openByUser(admins[1]);
 
     println;
 
@@ -300,15 +310,69 @@ int main()
             "Lab: " << employees[0].getLab().toString() << endl <<
             "Position: " << employees[0].getPosition() << endl;
 
+    println;
+
 
     //=============================================================================
-    //=============================================================================
+    //===============================New============================================
     //=============================================================================
 
-//    Admin a1("name", "surname", "t", wiFiPassword);
-//    Admin a2("name", "surname", "t", wiFiPassword);
-//
-//    cout << (a1 != a2);
+    Guest guests[4] {
+        Guest("Made", "Oka", "tourism"),
+        Guest("Pape", "Laba", "tourism"),
+        Guest("Jama", "Pera", "guide"),
+        Guest("Amaren", "Dudared", "business")
+    };
+
+    conferenceRoom1.openByUser(guests[0]); // opened
+    lectureRoom2.openByUser(guests[1]); // opened
+
+    conferenceRoom1.openByUser(students[14]); // opened
+
+    conferenceRoom2.openByUser(guests[2]); // cannot open
+    conferenceRoom2.openByUser(guests[3]);  // cannot open
+
+    conferenceRoom2.openByUser(students[15]);  // opened
+
+
+    println;
+
+    /* Before emergency */
+    directorCabinet2.openByUser(guests[0]);
+    directorCabinet1.openByUser(students[0]);
+    directorCabinet2.openByUser(professors[2]);
+    directorCabinet1.openByUser(employees[0]);
+    directorCabinet1.openByUser(admins[0]);
+    directorCabinet2.openByUser(directors[0]);
+
+    println;
+
+    // testing our system in case of emergency situation
+    EmergencyTest::testRunEmergency();
+
+
+    /* In time of emergency */
+    directorCabinet2.openByUser(guests[0]);
+    directorCabinet1.openByUser(students[0]);
+    directorCabinet2.openByUser(professors[2]);
+    directorCabinet1.openByUser(employees[0]);
+    directorCabinet1.openByUser(admins[0]);
+    directorCabinet2.openByUser(directors[0]);
+
+    println;
+
+    EmergencyTest::testStopEmergency();
+
+    /* After emergency */
+    directorCabinet2.openByUser(guests[0]);
+    directorCabinet1.openByUser(students[0]);
+    directorCabinet2.openByUser(professors[2]);
+    directorCabinet1.openByUser(employees[0]);
+    directorCabinet1.openByUser(admins[0]);
+    directorCabinet2.openByUser(directors[0]);
+
+    println;
+
 
     return 0;
 }

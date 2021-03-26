@@ -1,4 +1,7 @@
 #include "UniversityUser.h"
+
+#include <cctype>
+#include <typeindex>
 using namespace std;
 
 
@@ -17,7 +20,7 @@ bool UniversityUser::operator==(const User &rhs) const  {
         return true;
 
     // if instances are of different types
-    if (std::type_index(typeid(*this)) != std::type_index(typeid(rhs)))
+    if (type_index(typeid(*this)) != type_index(typeid(rhs)))
         return false;
 
     auto& user = (UniversityUser&)(rhs);

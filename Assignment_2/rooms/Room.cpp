@@ -1,5 +1,6 @@
 #include "Room.h"
 #include "../io/Console.h"
+#include "../emergency/Emergency.h"
 
 #include <algorithm>
 
@@ -33,7 +34,9 @@ std::ostream &operator<<(std::ostream &out, const Room &room) {
 /* Public member-functions */
 
 void Room::openByUser(const User& user) const {
-    if (!hasUserDefaultAccess(user) && !hasUserGrantedAccess(user))
+    if (!Emergency::isEmergency() &&
+        !hasUserDefaultAccess(user) &&
+        !hasUserGrantedAccess(user))
     {
         Console::printUserOpenRoomFailure(user, *this);
         return;
@@ -43,7 +46,7 @@ void Room::openByUser(const User& user) const {
 }
 
 bool Room::hasUserDefaultAccess(const User &user) const {
-    return user.getAccessLevel() < *accessLevel;
+    return *accessLevel <= user.getAccessLevel();
 }
 
 bool Room::hasUserGrantedAccess(const User &user) const {

@@ -91,4 +91,14 @@ namespace Console {
              << ", but " << user.toString()
              << " hasn't had a granted access to this room" << std::endl;
     }
+
+    void printRunEmergency(const std::string& cause) {
+        std::cout << "_____<Attention! Emergency situation caused by "
+            << cause << ">_____" << std::endl;
+    }
+
+    void printStopEmergency() {
+        std::cout << "_____<Emergency situation has stopped" << ">_____"
+            << std::endl;
+    }
 }

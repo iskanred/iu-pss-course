@@ -59,6 +59,10 @@ namespace Console {
     void printAdminRemoveGrantedAccessForUserToRoomFailure(const Admin& admin,
                                                            const User& user,
                                                            const Room& room);
+
+    void printRunEmergency(const std::string& cause);
+
+    void printStopEmergency();
 }
 
 

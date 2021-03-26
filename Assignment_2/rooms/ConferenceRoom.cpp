@@ -4,7 +4,7 @@
 /* Constructor */
 
 ConferenceRoom::ConferenceRoom(std::string number, short floor, size_t capacity) :
-        Room(std::move(number), floor, AccessLevel::GREEN),
+        Room(std::move(number), floor, floor == 1 ? AccessLevel::BLUE : AccessLevel::GREEN),
         capacity(capacity)
 { }
 
