@@ -17,11 +17,11 @@ std::string Requests::readRequest() {
 }
 
 
-void Requests::sendTestRequestForRunEmergency() {
+void Requests::sendTestRequestForRunEmergency(const std::string& cause) {
 
     std::ofstream requestsFout(requestsFilePath);
 
-    requestsFout << "run-emergency:fire";
+    requestsFout << ("run-emergency:" + cause);
 
     requestsFout.close();
 }

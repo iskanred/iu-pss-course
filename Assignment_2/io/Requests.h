@@ -13,7 +13,7 @@ namespace Requests {
 
     // For Test
 
-    void sendTestRequestForRunEmergency();
+    void sendTestRequestForRunEmergency(const std::string& cause);
 
     void sendTestRequestForStopEmergency();
 }

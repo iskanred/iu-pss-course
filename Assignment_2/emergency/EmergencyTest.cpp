@@ -9,7 +9,7 @@
 namespace EmergencyTest {
 
     void testRunEmergency() {
-        Requests::sendTestRequestForRunEmergency();
+        Requests::sendTestRequestForRunEmergency("fire");
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
 
