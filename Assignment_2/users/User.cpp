@@ -1,24 +1,21 @@
 #include "User.h"
-#include <cctype>
 using namespace std;
 
 
 /* Constructor */
 
-User::User(string name, string surname, string tgAlias, const AccessLevel& accessLevel) :
-        name(move(name)), surname(move(surname)), tgAlias(move(tgAlias)),
-        accessLevel(&accessLevel), universityEmail(generateEmail())
+User::User(string name, string surname, const AccessLevel& accessLevel) :
+        name(move(name)), surname(move(surname)), accessLevel(&accessLevel)
 { }
 
 
 /* Overloaded Operators */
 
 bool User::operator==(const User &rhs) const {
-    return (this == &rhs) ||
+    return  (this == &rhs) ||
             (name == rhs.name &&
             surname == rhs.surname &&
-            tgAlias == rhs.tgAlias &&
-            accessLevel == rhs.accessLevel);
+            *accessLevel == *rhs.accessLevel);
 }
 
 bool User::operator!=(const User &rhs) const {
@@ -28,13 +25,6 @@ bool User::operator!=(const User &rhs) const {
 std::ostream &operator<<(ostream &out, const User &user)  {
     out << user.toString();
     return out;
-}
-
-
-/* Setters */
-
-void User::setTgAlias(const string &tgAlias) {
-    User::tgAlias = tgAlias;
 }
 
 
@@ -52,37 +42,8 @@ const string &User::getSurname() const {
     return surname;
 }
 
-const string &User::getTgAlias() const {
-    return tgAlias;
-}
-
-const string &User::getUniversityEmail() const {
-    return universityEmail;
-}
-
 const AccessLevel &User::getAccessLevel() const {
     return *accessLevel;
-}
-
-
-/* Private functions */
-
-string User::toLowerCase(string str) {
-    string strToLower = move(str);
-
-    for (char& c : strToLower)
-        c = (char) tolower(c);
-
-    return strToLower;
-}
-
-string User::generateEmail() const {
-    string surnameLowerCase = toLowerCase(surname);
-
-    string email = string(1, tolower(name[0])) + "."
-                   + surnameLowerCase + "@innopolis.ru";
-
-    return email;
 }
 
 

@@ -5,6 +5,8 @@
 
 const AccessLevel AccessLevel::NO_LEVEL = AccessLevel(AccessType::NO_LEVEL);
 
+const AccessLevel AccessLevel::BLUE = AccessLevel(AccessType::BLUE);
+
 const AccessLevel AccessLevel::GREEN = AccessLevel(AccessType::GREEN);
 
 const AccessLevel AccessLevel::YELLOW = AccessLevel(AccessType::YELLOW);
@@ -58,11 +60,14 @@ std::string AccessLevel::toString() const {
         case AccessType::NO_LEVEL :
             return "[NO_LEVEL]";
 
-        case AccessType::YELLOW :
-            return "[YELLOW]";
+        case AccessType::BLUE:
+            return "[BLUE]";
 
         case AccessType::GREEN :
             return "[GREEN]";
+
+        case AccessType::YELLOW :
+            return "[YELLOW]";
 
         case AccessType::RED :
             return "[RED]";

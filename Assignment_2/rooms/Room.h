@@ -19,6 +19,8 @@ class Room {
 
 protected:
 
+    short floor;
+
     std::string number;
 
     std::vector<const User*> grantedAccessUsers;
@@ -27,7 +29,7 @@ protected:
 
 
     /* Constructor */
-    explicit Room(std::string number, const AccessLevel& accessLevel);
+    explicit Room(std::string number, short floor, const AccessLevel& accessLevel);
 
 public:
     /* Overloaded Operators */
@@ -41,10 +43,14 @@ public:
 
     void openByUser(const User& user) const;
 
+    [[nodiscard]] bool hasUserDefaultAccess(const User& user) const;
+
     [[nodiscard]] bool hasUserGrantedAccess(const User& user) const;
 
 
     /* Getters */
+
+    [[nodiscard]] short getFloor() const;
 
     [[nodiscard]] const std::string &getNumber() const;
 

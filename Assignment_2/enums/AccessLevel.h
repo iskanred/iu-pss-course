@@ -9,9 +9,10 @@
  *  with methods and fields
  *
  * This class is completely immutable
- * There are only 4 instances of this class that can exist in the program.
+ * There are only 5 instances of this class that can exist in the program.
  *  These instances are static const members of this class
  *  - NO_LEVEL
+ *  - BLUE
  *  - GREEN
  *  - YELLOW
  *  - RED
@@ -23,9 +24,10 @@ class AccessLevel final {
     /** Inner enum */
     enum class AccessType {
         NO_LEVEL = 0,
-        GREEN = 1,
-        YELLOW = 2,
-        RED = 3
+        BLUE = 1,
+        GREEN = 2,
+        YELLOW = 3,
+        RED = 4
     };
 
 
@@ -47,6 +49,7 @@ public:
 
     /** These constants are the only instances of this class that can exist in the program */
     static const AccessLevel NO_LEVEL;
+    static const AccessLevel BLUE;
     static const AccessLevel GREEN;
     static const AccessLevel YELLOW;
     static const AccessLevel RED;

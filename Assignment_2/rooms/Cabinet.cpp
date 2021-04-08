@@ -3,8 +3,8 @@
 
 /* Constructor */
 
-Cabinet::Cabinet(std::string number, size_t computersNumber) :
-        Room(std::move(number), AccessLevel::YELLOW),
+Cabinet::Cabinet(std::string number, short floor, size_t computersNumber) :
+        Room(std::move(number), floor, AccessLevel::YELLOW),
         computersNumber(computersNumber)
 { }
 

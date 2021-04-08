@@ -10,7 +10,7 @@ class LectureRoom : public Room {
 
 public:
     /* Constructor */
-    explicit LectureRoom(std::string number);
+    explicit LectureRoom(std::string number, short floor);
 
 
     /* Public member-functions */

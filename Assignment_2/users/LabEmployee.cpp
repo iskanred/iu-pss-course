@@ -5,26 +5,16 @@ using namespace std;
 /* Constructor */
 
 LabEmployee::LabEmployee(string name, string surname, string tgAlias, const Lab& lab, string position) :
-    User(move(name), move(surname), move(tgAlias), AccessLevel::YELLOW),
+    UniversityUser(move(name), move(surname), AccessLevel::YELLOW, move(tgAlias)),
     lab(&lab), position(move(position))
 { }
 
 
 /* Public member-functions */
 
-void LabEmployee::saySomething() const {
-    cout << toString() << ": Our lab is the best one at university" << endl;
-}
-
 string LabEmployee::toString() const {
     return "{Lab employee} " + getFullName();
 }
-
-void LabEmployee::talkWithProfessor(const Professor& professor) const {
-    professor.saySomething();
-    cout << toString() << ": Ha-ha-ha" << endl;
-}
-
 
 /* Setters */
 

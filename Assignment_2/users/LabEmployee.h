@@ -1,12 +1,11 @@
 #ifndef ASSIGNMENT_2_LABEMPLOYEE_H
 #define ASSIGNMENT_2_LABEMPLOYEE_H
 
-#include "User.h"
-#include "Professor.h"
+#include "UniversityUser.h"
 #include "../enums/Lab.h"
 
 
-class LabEmployee : public User {
+class LabEmployee : public UniversityUser {
 
     const Lab* lab;
 
@@ -23,11 +22,7 @@ public:
 
     /* Public member-functions */
 
-    void saySomething() const override;
-
     [[nodiscard]] std::string toString() const override;
-
-    void talkWithProfessor(const Professor& professor) const;
 
 
     /* Setters */

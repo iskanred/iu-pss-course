@@ -1,44 +1,41 @@
 #include "Director.h"
+#include "../io/Console.h"
 using namespace std;
 
 
 /* Constructors */
 
 Director::Director(string name, string surname, string tgAlias)
-    : User(move(name), move(surname), move(tgAlias), AccessLevel::RED),
+    : UniversityUser(move(name), move(surname), AccessLevel::RED, move(tgAlias)),
         presentAtUniversity(true), cabinet(nullptr)
 { }
 
 Director::Director(string name, string surname, string tgAlias, DirectorCabinet &cabinet)
-    : User(move(name), move(surname), move(tgAlias), AccessLevel::RED),
+    : UniversityUser(move(name), move(surname), AccessLevel::RED, move(tgAlias)),
         presentAtUniversity(true), cabinet(&cabinet)
 {
     // if this is already another director's cabinet
-    if (!DirectorSetter::setDirectorToCabinet(this, cabinet))
-    {
-        cout << "Director " << getFullName()
-                << " has tried to take " << cabinet.toString()
-                << ", but this cabinet is already taken by "
-                << cabinet.getDirector()->toString() << endl;
+    if (!DirectorSetter::setDirectorToCabinet(this, cabinet)) {
+        Console::printDirectorTakeCabinetFailure(*this, cabinet);
     }
 }
 
 
 /* Public member-functions */
 
-void Director::saySomething() const {
-    cout << toString() << ": We need to decrease a scholarship for students!" << endl;
-}
-
 string Director::toString() const {
     return "{Director} " + getFullName();
 }
 
 void Director::removeCabinet() {
+    if (cabinet == nullptr) {
+        Console::printDirectorRemoveCabinetFailure(*this);
+        return;
+    }
+
     DirectorSetter::setDirectorToCabinet(nullptr, *cabinet);
 
-    cout << cabinet->toString() << " is not "
-            << toString() << "'s cabinet more" << endl;
+    Console::printDirectorRemoveCabinetSuccess(*this, *cabinet);
 
     cabinet = nullptr;
 }
@@ -58,17 +55,13 @@ void Director::setCabinet(DirectorCabinet& cabinet) {
 
         Director::cabinet = &cabinet;
 
-        cout << toString()
-             << " has taken " << cabinet.toString() << endl;
+        Console::printDirectorTakeCabinetSuccess(*this, cabinet);
 
         return;
     }
 
     // if this is already another director's cabinet
-    cout << toString()
-            << " has tried to take " << cabinet.toString()
-            << ", but this cabinet is already taken by "
-            << cabinet.getDirector()->toString() << endl;
+    Console::printDirectorTakeCabinetFailure(*this, cabinet);
 }
 
 

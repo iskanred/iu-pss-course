@@ -1,12 +1,14 @@
 #include "Room.h"
-#include <iostream>
+#include "../io/Console.h"
+#include "../emergency/Emergency.h"
+
 #include <algorithm>
 
 
 /* Constructor */
 
-Room::Room(std::string number, const AccessLevel& accessLevel) :
-    number(std::move(number)), accessLevel(&accessLevel)
+Room::Room(std::string number, short floor, const AccessLevel& accessLevel) :
+    number(std::move(number)), floor(floor), accessLevel(&accessLevel)
 { }
 
 
@@ -32,16 +34,19 @@ std::ostream &operator<<(std::ostream &out, const Room &room) {
 /* Public member-functions */
 
 void Room::openByUser(const User& user) const {
-    if (user.getAccessLevel() < *accessLevel &&
+    if (!Emergency::isEmergency() &&
+        !hasUserDefaultAccess(user) &&
         !hasUserGrantedAccess(user))
     {
-        std::cout << user.toString() << " cannot open the "
-                    << toString() << std::endl;
+        Console::printUserOpenRoomFailure(user, *this);
         return;
     }
 
-    std::cout << user.toString() << " has opened the "
-              << toString() << std::endl;
+    Console::printUserOpenRoomSuccess(user, *this);
+}
+
+bool Room::hasUserDefaultAccess(const User &user) const {
+    return *accessLevel <= user.getAccessLevel();
 }
 
 bool Room::hasUserGrantedAccess(const User &user) const {
@@ -50,6 +55,10 @@ bool Room::hasUserGrantedAccess(const User &user) const {
 
 
 /* Getters */
+
+short Room::getFloor() const {
+    return floor;
+}
 
 const std::string &Room::getNumber() const {
     return number;
@@ -82,5 +91,6 @@ bool RoomPropertiesUpdater::removeGrantedAccessUser(Room& room, const User &user
         return false;
 
     room.grantedAccessUsers.erase(it);
+
     return true;
 }

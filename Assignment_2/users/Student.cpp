@@ -5,7 +5,7 @@ using namespace std;
 /* Constructor */
 
 Student::Student(string name, string surname, string tgAlias, string group, bool studyOffline, set<const Course*> courses) :
-    User(move(name), move(surname), move(tgAlias), AccessLevel::GREEN),
+    UniversityUser(move(name), move(surname), AccessLevel::GREEN, move(tgAlias)),
     group(move(group)), studyOffline(studyOffline), courses(move(courses))
 {
     universityEmail = generateEmailForStudent();
@@ -14,17 +14,8 @@ Student::Student(string name, string surname, string tgAlias, string group, bool
 
 /* Public member-functions */
 
-void Student::saySomething() const {
-    cout << toString() << ": Increase a scholarship, please!" << endl;
-}
-
 string Student::toString() const {
     return "{Student} " + getFullName();
-}
-
-void Student::talkWithProfessor(const Professor& professor) const {
-    cout << professor.toString() << ": See you on retake, " << name << endl;
-    cout << toString() << ": Please, professor, give me C" << endl;
 }
 
 

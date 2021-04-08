@@ -9,12 +9,12 @@
  *
  * So, it will be associated automatically, when such a director takes this cabinet
  */
-DirectorCabinet::DirectorCabinet(std::string number)
-    : Room(std::move(number), AccessLevel::RED), director(nullptr)
+DirectorCabinet::DirectorCabinet(std::string number, short floor)
+    : Room(std::move(number), floor, AccessLevel::RED), director(nullptr)
 { }
 
-DirectorCabinet::DirectorCabinet(std::string number, Director& director) :
-        Room(std::move(number), AccessLevel::RED)
+DirectorCabinet::DirectorCabinet(std::string number, short floor, Director& director) :
+        Room(std::move(number), floor, AccessLevel::RED)
 {
     director.setCabinet(*this);
 }

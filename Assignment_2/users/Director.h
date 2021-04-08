@@ -1,14 +1,14 @@
 #ifndef ASSIGNMENT_2_DIRECTOR_H
 #define ASSIGNMENT_2_DIRECTOR_H
 
-#include "User.h"
+#include "UniversityUser.h"
 #include "../rooms/DirectorCabinet.h"
 
 
 class DirectorCabinet;
 
 
-class Director : public User {
+class Director : public UniversityUser {
 
     friend class DirectorCabinetSetter;
 
@@ -35,8 +35,6 @@ public:
 
 
     /* Public member-functions */
-
-    void saySomething() const override;
 
     [[nodiscard]] std::string toString() const override;
 

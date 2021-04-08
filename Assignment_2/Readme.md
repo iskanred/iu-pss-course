@@ -1,9 +1,10 @@
-# Assignemnt 2
+# Assignemnt 2 & 3
 
-Implementation of access-levels system at a universty
+Implementation of access-levels system at a university
 
 ## System Requirments
 The program was successfully tested on **Windows 10** with **MinGW** compiler. It should work with any other system and other compilers, but there can appear some troubles.
+It might not work with some versions of **MinGW** on **Windows** system due to the threads mechanism.
 
 ## Tools Requirments
 **C++ 17** |
@@ -11,9 +12,18 @@ The program was successfully tested on **Windows 10** with **MinGW** compiler. I
 
 ## Project Files
 ```     
-        CMakeLists.txt
-
         main.cpp
+        CMakeLists.txt
+        requests.txt
+
+
+        io/io.h
+        io/Console.h
+        io/Requests.h
+
+        emergency/emergencies.h
+        emergency/Emergency.h
+        emergency/EmergencyTest.h
 
         enums/enums.h
         enums/Lab.h
@@ -22,6 +32,8 @@ The program was successfully tested on **Windows 10** with **MinGW** compiler. I
 
         users/users.h
         users/User.h
+        users/UniversityUser.h
+        users/Guest.h
         users/Student.h
         users/Professor.h
         users/LabEmployee.h
@@ -36,11 +48,20 @@ The program was successfully tested on **Windows 10** with **MinGW** compiler. I
         rooms/Cabinet.h
         rooms/DirectorCabinet.h
 
+
+        io/Console.cpp
+        io/Requests.cpp
+
+        emergency/Emergency.cpp
+        emergency/EmergencyTest.cpp
+
         enums/Lab.cpp
         enums/AccessLevel.cpp
         enums/Course.cpp
 
         users/User.cpp
+        users/UniversityUser.cpp
+        users/Guest.cpp
         users/Student.cpp
         users/Professor.cpp
         users/LabEmployee.cpp
@@ -57,10 +78,10 @@ The program was successfully tested on **Windows 10** with **MinGW** compiler. I
 
 ## How to Run?
 
-Compile sourse files ```*.cpp``` with any **C++** compiler or if you have **Cmake** build-tool you can use it to build project. Further, it is easy to open project folder with **CLion** IDE.
+Compile source files ```*.cpp``` with any **C++** compiler or if you have **Cmake** build-tool you can use it to build project. Further, it is easy to open project folder with **CLion** IDE.
 
 ## Author
 **Iskander Nafikov BS20-02**
 
-## Documentitation
-All necessary documentation you can find inside the sourse files.
+## Documentation
+All necessary documentation you can find inside the source files.

@@ -1,11 +1,11 @@
 #ifndef ASSIGNMENT_2_ADMIN_H
 #define ASSIGNMENT_2_ADMIN_H
 
-#include "User.h"
+#include "UniversityUser.h"
 #include "../rooms/Room.h"
 
 
-class Admin : public User {
+class Admin : public UniversityUser {
 
     std::string wiFiPassword; // Admin keeps password for university Wi-Fi
 
@@ -15,8 +15,6 @@ public:
 
 
     /* Public member-functions */
-
-    void saySomething() const override;
 
     [[nodiscard]] std::string toString() const override;
 

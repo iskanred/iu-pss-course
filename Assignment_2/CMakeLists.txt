@@ -4,7 +4,14 @@ project(Assignment_2)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Assignment_2
-        main.cpp
+
+        io/io.h
+        io/Console.h
+        io/Requests.h
+
+        emergency/emergencies.h
+        emergency/Emergency.h
+        emergency/EmergencyTest.h
 
         enums/enums.h
         enums/Lab.h
@@ -13,6 +20,8 @@ add_executable(Assignment_2
 
         users/users.h
         users/User.h
+        users/UniversityUser.h
+        users/Guest.h
         users/Student.h
         users/Professor.h
         users/LabEmployee.h
@@ -29,11 +38,21 @@ add_executable(Assignment_2
 
         #=====================
 
+        main.cpp
+
+        io/Console.cpp
+        io/Requests.cpp
+
+        emergency/Emergency.cpp
+        emergency/EmergencyTest.cpp
+
         enums/Lab.cpp
         enums/AccessLevel.cpp
         enums/Course.cpp
 
         users/User.cpp
+        users/UniversityUser.cpp
+        users/Guest.cpp
         users/Student.cpp
         users/Professor.cpp
         users/LabEmployee.cpp

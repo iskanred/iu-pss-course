@@ -2,7 +2,6 @@
 #define ASSIGNMENT_2_USER_H
 
 #include <string>
-#include <iostream>
 #include "../enums/AccessLevel.h"
 
 
@@ -22,23 +21,18 @@ protected:
 
     std::string surname;
 
-    std::string tgAlias; // telegram alias
-
     const AccessLevel* accessLevel;
-
-    std::string universityEmail;
 
 
     /* Constructor */
     User(std::string name,
          std::string surname,
-         std::string tgAlias,
          const AccessLevel& accessLevel);
 
 public:
     /* Overloaded Operators */
 
-    bool operator==(const User &rhs) const;
+    virtual bool operator==(const User &rhs) const;
 
     bool operator!=(const User &rhs) const;
 
@@ -47,14 +41,7 @@ public:
 
     /* Abstract member-functions */
 
-    virtual void saySomething() const = 0;
-
     [[nodiscard]] virtual std::string toString() const = 0;
-
-
-    /* Setters */
-
-    void setTgAlias(const std::string &tgAlias);
 
 
     /* Getters */
@@ -65,18 +52,7 @@ public:
 
     [[nodiscard]] const std::string &getSurname() const;
 
-    [[nodiscard]] const std::string &getTgAlias() const;
-
-    [[nodiscard]] const std::string &getUniversityEmail() const;
-
     [[nodiscard]] const AccessLevel &getAccessLevel() const;
-
-private:
-    /* Private functions */
-
-    [[nodiscard]] std::string generateEmail() const;
-
-    static std::string toLowerCase(std::string str);
 };
 
 

@@ -3,8 +3,8 @@
 
 /* Constructor */
 
-LectureRoom::LectureRoom(std::string number) :
-        Room(std::move(number), AccessLevel::YELLOW), micCharged(true)
+LectureRoom::LectureRoom(std::string number, short floor) :
+        Room(std::move(number), floor, floor == 1 ? AccessLevel::BLUE : AccessLevel::YELLOW), micCharged(true)
 { }
 
 
