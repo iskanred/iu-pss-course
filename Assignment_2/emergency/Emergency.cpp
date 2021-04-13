@@ -4,7 +4,6 @@
 #include "../io/Requests.h"
 
 
-
 /* Private static functions */
 
 void Emergency::runEmergency(const std::string &cause) {
