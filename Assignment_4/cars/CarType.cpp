@@ -56,11 +56,23 @@ const CarType &CarType::determineCarType(const std::string &carModel,
 {
     // Here can be the determining car type
     // Now it is generated randomly
-
-    srand(time(nullptr));
     int typeId = rand() % CarType::getCarTypesNumber();
 
     return CarType::getCarTypeById(typeId);
+}
+
+
+const CarType &CarType::getCarTypeFromName(const std::string &carTypeName) {
+    if (carTypeName == ECONOMY.toString())
+        return ECONOMY;
+    else if (carTypeName == COMFORT.toString())
+        return COMFORT;
+    else if (carTypeName == COMFORT_PLUS.toString())
+        return COMFORT_PLUS;
+    else if (carTypeName == BUSINESS.toString())
+        return BUSINESS;
+    else
+        throw; // should throw an exception
 }
 
 

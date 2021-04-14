@@ -1,21 +1,47 @@
 #include <iostream>
 using namespace std;
 
-#include "logic/System.h"
+#include "test/Test.h"
+
+
+/**
+ * Wendex Taxi backend
+ * ===============================
+ * Student: Iskander Nafikov
+ * Group: BS20-02
+ * TA: Mike Ivanov
+ * ===============================
+ *
+ * Database files already had some information about passengers, drivers and previous rides.
+ * So, the this information will be restored in this 'main' function.
+ * Also, 'main' will test some functional and add new information.
+ * Thus, the information will be changed.
+ *
+ * Do not run this code multiple times because it can lead to users with the same information!
+ *
+ * If you want to run this code multiple times, it is better to change users' information (names, etc.)
+ *  to avoid confusions
+ */
 
 
 int main()
 {
+    srand(time(nullptr));
+
+    Test::restoreInfoFromDB(); // restoring already existed info from database
+
+    // Forming 4 locations
     Location from1(1, 2);
     Location to1(1, 2);
     Location from2(12, 12);
     Location to2(34, 46);
 
+    // Register passenger and driver
+    Test::registerPassenger("Alexander", "+73255459809", "alex@z.ru");
+    Test::registerDriver("Boris", "+79193457393", "boryaa@b.en",
+                           "Lada Granta", "White", "O9I8U7");
 
-    Test::registerPassenger("Muhammad", "+79876543429", "budam.denum@mail.com");
-    Test::registerDriver("Andrey", "+79198657893", "andrey@mail.com",
-                           "Hyundai Solaris", "Gray", "I9O7H6");
-
+    // Getting these passenger and driver
     auto& passenger1 = Test::getLastPassenger();
     auto& driver1 = Test::getLastDriver();
 
@@ -23,11 +49,12 @@ int main()
     Test::setWorkingStatusToDriver(driver1, true);
 
 
+    // Register passenger and driver
+    Test::registerPassenger("Ivan", "+79600543347", "vanya@vanya.vn");
+    Test::registerDriver("Ulup", "+79138457822", "ululu.u@mail.ul",
+                         "Kia Rio", "Black", "N6V3K1");
 
-    Test::registerPassenger("Abdul", "+79876543347", "humady.olu@mail.com");
-    Test::registerDriver("Ulip", "+79198457893", "ulip@mail.com",
-                         "Toyota Cresta", "Yellow", "I0S2D9");
-
+    // Getting these passenger and driver
     auto& passenger2 = Test::getLastPassenger();
     auto& driver2 = Test::getLastDriver();
 
@@ -35,49 +62,52 @@ int main()
     Test::setWorkingStatusToDriver(driver2, true);
 
 
-
-    Test::registerPassenger("Nikam", "+79236443347", "nikam@mail.com");
-    auto& passenger3 = Test::getLastPassenger();
-
-    Test::setDefaultPaymentMethodToPassenger(passenger3, Payment::CASH);
-
-
-
+    // Getting conditions of the rides to passengers
     auto rideInfo1 = Test::getPotentialRideInfo(passenger1, from1, to1);
     auto rideInfo2 = Test::getPotentialRideInfo(passenger2, from2, to2);
-    auto rideInfo3 = Test::getPotentialRideInfo(passenger2, from2, to2);
 
-    Test::makeOrder(passenger1, rideInfo1[0]);
-    Test::makeOrder(passenger1, rideInfo1[1]);
-    Test::makeOrder(passenger1, rideInfo1[2]);
-    Test::makeOrder(passenger1, rideInfo1[3]);
+    // Trying to make order for each car type: Economy, Comfort, ...
+    if (Test::makeOrder(passenger1, rideInfo1[0]))
+        ;
+    else if (Test::makeOrder(passenger1, rideInfo1[1]))
+        ;
+    else if(Test::makeOrder(passenger1, rideInfo1[2]))
+        ;
+    else if(Test::makeOrder(passenger1, rideInfo1[3]))
+        ;
+    else
+        ; // no drivers available
 
+
+    // Getting this order if it was done
     auto& order1 = Test::getLastOrder();
     cout << endl;
 
-    Test::makeOrder(passenger2, rideInfo2[0]);
-    Test::makeOrder(passenger2, rideInfo2[1]);
-    Test::makeOrder(passenger2, rideInfo2[2]);
-    Test::makeOrder(passenger2, rideInfo2[3]);
 
+    // Trying to make order for each car type: Economy, Comfort, ...
+    if (Test::makeOrder(passenger2, rideInfo2[0]))
+        ;
+    else if (Test::makeOrder(passenger2, rideInfo2[1]))
+        ;
+    else if(Test::makeOrder(passenger2, rideInfo2[2]))
+        ;
+    else if(Test::makeOrder(passenger2, rideInfo2[3]))
+        ;
+    else
+        ; // no drivers available
+
+
+    // Getting this order if it was done
     auto& order2 = Test::getLastOrder();
     cout << endl;
 
-    Test::makeOrder(passenger3, rideInfo3[0]);
-    Test::makeOrder(passenger3, rideInfo3[1]);
-    Test::makeOrder(passenger3, rideInfo3[2]);
-    Test::makeOrder(passenger3, rideInfo3[3]);
-
-    cout << endl;
-
-
+    // Print bill of order 1
     passenger1.askForBill(order1);
     cout << endl;
 
+    // Print bill of order 2
     passenger2.askForBill(order2);
     cout << endl;
-
-
 
     return 0;
 }

@@ -15,6 +15,9 @@
 
 class Passenger : public User {
 
+    static inline size_t counter = 0;
+
+
     std::vector<Location> pinnedLocations;
 
     Payment paymentMethod;
@@ -34,9 +37,9 @@ public:
               std::string phoneNumber,
               std::string email,
               std::vector<double> ratings,
-              std::vector<const Order*> orderHistory,
               std::vector<Location> pinnedLocations,
-              Payment paymentMethod);
+              Payment paymentMethod,
+              size_t id);
 
 
     void addLocation(const Location &location);

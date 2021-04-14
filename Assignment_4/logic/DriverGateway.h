@@ -27,9 +27,20 @@ class DriverGateway {
                              std::string email, std::string carModel,
                              std::string carColor, std::string carNumber);
 
+    static void addExistedDriver(std::string name,
+                             std::string phoneNumber, std::string email,
+                             std::vector<double> ratings, size_t id,
+                             const CarType &carType,
+                             std::string carModel,
+                             std::string carColor,
+                             std::string carNumber);
+
+
     static const Driver *getMatchedDriver(const PotentialOrder &potentialOrder);
 
     static void addOrderToHistoryOfDriver(const Order &order);
+
+    static const Driver &getDriverById(size_t id);
 
 
 public:

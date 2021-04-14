@@ -16,6 +16,11 @@ void Test::registerDriver(string name, string phoneNumber, string email, string 
 }
 
 
+void Test::restoreInfoFromDB() {
+    System::restoreInfo();
+}
+
+
 Passenger &Test::getLastPassenger() {
     return PassengerGateway::passengers.back();
 }
@@ -45,6 +50,13 @@ std::vector<PotentialOrder> Test::getPotentialRideInfo(const Passenger &passenge
     return passenger.getPotentialRideInfo(from, to);
 }
 
-void Test::makeOrder(Passenger &passenger, const PotentialOrder &potentialOrder) {
+bool Test::makeOrder(Passenger &passenger, const PotentialOrder &potentialOrder) {
+    size_t startOrdersCount = System::orders.size();
+
     passenger.makeOrder(potentialOrder);
+
+    if (System::orders.size() > startOrdersCount)
+        return true;
+    else
+        return false;
 }

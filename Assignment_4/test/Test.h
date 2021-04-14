@@ -25,6 +25,9 @@ public:
                                std::string carNumber);
 
 
+    static void restoreInfoFromDB();
+
+
     static Passenger &getLastPassenger();
 
     static Driver &getLastDriver();
@@ -39,7 +42,7 @@ public:
                                                             const Location &from,
                                                             const Location &to);
 
-    static void makeOrder(Passenger &passenger, const PotentialOrder &potentialOrder);
+    static bool makeOrder(Passenger &passenger, const PotentialOrder &potentialOrder);
 
 
     static void setDefaultPaymentMethodToPassenger(Passenger &passenger, Payment paymentMethod);

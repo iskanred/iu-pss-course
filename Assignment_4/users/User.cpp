@@ -3,20 +3,25 @@
 #include <numeric>
 
 
-User::User(std::string name, std::string phoneNumber, std::string email) :
+User::User(std::string name, std::string phoneNumber, std::string email, size_t id) :
     name(std::move(name)), phoneNumber(std::move(phoneNumber)), email(std::move(email)),
-    ratings(1, 5.0), signedIn(false), orderHistory()
+    ratings(1, 5.0), signedIn(true), orderHistory(), id(id)
 { }
 
 User::User(std::string name, std::string phoneNumber,
-           std::string email, std::vector<double> ratings, std::vector<const Order*> orderHistory) :
+           std::string email, std::vector<double> ratings, size_t id) :
     name(std::move(name)), phoneNumber(std::move(phoneNumber)), email(std::move(email)),
-    ratings(std::move(ratings)), signedIn(false), orderHistory(std::move(orderHistory))
+    ratings(std::move(ratings)), signedIn(true), id(id)
 { }
 
 
 void User::addOrder(const Order &order) {
     orderHistory.push_back(&order);
+}
+
+
+size_t User::getId() const {
+    return id;
 }
 
 

@@ -20,7 +20,7 @@ Order::Order(TimeStamp startTime, TimeStamp endTime,
         startLocation(startLocation), endLocation(endLocation), distance(distance),
         cost(cost), passenger(passenger), driver(driver), payment(payment), id(id)
 {
-    counter = std::max(counter, id); // update real counter of orders
+    counter = std::max(counter, id + 1); // update real counter of orders
 }
 
 

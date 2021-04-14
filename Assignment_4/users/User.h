@@ -17,6 +17,8 @@ class User {
 
 protected:
 
+    const size_t id;
+
     std::string name;
 
     std::string phoneNumber;
@@ -35,7 +37,8 @@ protected:
      */
     User(std::string name,
          std::string phoneNumber,
-         std::string email);
+         std::string email,
+         size_t id);
 
     /**
      * For an already existed user
@@ -44,7 +47,7 @@ protected:
          std::string phoneNumber,
          std::string email,
          std::vector<double> ratings,
-         std::vector<const Order*> orderHistory);
+         size_t id);
 
 
 public:
@@ -58,6 +61,9 @@ public:
     bool operator==(const User &rhs) const;
 
     bool operator!=(const User &rhs) const;
+
+
+    [[nodiscard]] size_t getId() const;
 
 
     [[nodiscard]] const std::string &getName() const;

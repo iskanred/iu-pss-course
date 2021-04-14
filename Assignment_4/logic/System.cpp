@@ -21,6 +21,43 @@ void System::registerDriver(std::string name, std::string phoneNumber,
 }
 
 
+void System::restoreInfo() {
+    DBHelper::readPassengers();
+    DBHelper::readDrivers();
+    DBHelper::readOrders();
+}
+
+void System::logInPassenger(std::string name, std::string phoneNumber, std::string email, std::vector<double> ratings,
+                            std::vector<Location> pinnedLocations, Payment paymentMethod, size_t id)
+{
+    PassengerGateway::addExistedPassenger(std::move(name), std::move(phoneNumber), std::move(email),
+                                          std::move(ratings), std::move(pinnedLocations), paymentMethod, id);
+}
+
+void System::logInDriver(std::string name, std::string phoneNumber, std::string email,
+                         std::vector<double> ratings, size_t id,
+                         const CarType &carType, std::string carModel, std::string carColor, std::string carNumber)
+{
+    DriverGateway::addExistedDriver(std::move(name), std::move(phoneNumber), std::move(email),
+                                    std::move(ratings), id, carType, std::move(carModel), std::move(carColor), std::move(carNumber));
+}
+
+void System::logInOrder(TimeStamp startTime, TimeStamp endTime, Location startLocation, Location endLocation,
+                        long double distance, long double cost, size_t passengerId, size_t driverId,
+                        Payment payment, size_t id)
+{
+    auto& passenger = PassengerGateway::getPassengerById(passengerId);
+    auto& driver = DriverGateway::getDriverById(driverId);
+
+    auto& order = orders.emplace_back(std::move(startTime), std::move(endTime),
+                        startLocation, endLocation, distance,
+                        cost, passenger, driver, payment, id);
+
+    PassengerGateway::addOrderToHistoryOfPassenger(order);
+    DriverGateway::addOrderToHistoryOfDriver(order);
+}
+
+
 bool System::makeOrder(const Passenger &passenger, const PotentialOrder &potentialOrder, Payment payment) {
     auto driver = DriverGateway::getMatchedDriver(potentialOrder);
 
@@ -37,7 +74,7 @@ bool System::makeOrder(const Passenger &passenger, const PotentialOrder &potenti
     PassengerGateway::addOrderToHistoryOfPassenger(order);
     DriverGateway::addOrderToHistoryOfDriver(order);
 
-    // Database write
+    DBHelper::writeNewOrder(order);
 
     return true;
 }

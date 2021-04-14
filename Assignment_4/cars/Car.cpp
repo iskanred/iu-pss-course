@@ -9,7 +9,7 @@ Car::Car(const CarType &carType, std::string model, std::string color, std::stri
 
 
 std::string Car::toString() const {
-    return carType->toString() + " " + color + " " + model + " " + number;
+    return carType->toString() + " " + color + " [ " + model + " ] " + number;
 }
 
 
@@ -25,7 +25,6 @@ void Car::setNumber(const std::string &number) {
 Location Car::getCurrentLocation() const {
     // Here can be computations of current location of this car
     // Now it is just randomly generated
-    srand (time(nullptr));
     return Location(rand() % 10000 + 1, rand() % 10000 + 1);
 }
 

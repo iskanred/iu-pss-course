@@ -1,18 +1,22 @@
 #include "Driver.h"
 
+#include <algorithm>
+
 
 
 Driver::Driver(std::string name, std::string phoneNumber, std::string email, const Car &car) :
-    User(std::move(name), std::move(phoneNumber), std::move(email)),
+    User(std::move(name), std::move(phoneNumber), std::move(email), counter++),
     car(car), workingStatus(false)
 { }
 
 Driver::Driver(std::string name, std::string phoneNumber, std::string email,
-               std::vector<double> ratings, std::vector<const Order *> orderHistory, const Car &car) :
+               std::vector<double> ratings, const Car &car, size_t id) :
     User(std::move(name), std::move(phoneNumber), std::move(email),
-         std::move(ratings), std::move(orderHistory)),
-    car(car), workingStatus(false)
-{ }
+         std::move(ratings), id),
+    car(car), workingStatus(true)
+{
+    counter = std::max(counter, id + 1);
+}
 
 
 bool Driver::isInRide() const {

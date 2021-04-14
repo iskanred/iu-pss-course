@@ -34,6 +34,29 @@ public:
                                std::string carColor,
                                std::string carNumber);
 
+
+    static void restoreInfo();
+
+    static void logInPassenger(std::string name,
+                               std::string phoneNumber,
+                               std::string email,
+                               std::vector<double> ratings,
+                               std::vector<Location> pinnedLocations,
+                               Payment paymentMethod, size_t id);
+
+    static void logInDriver(std::string name, std::string phoneNumber, std::string email,
+                            std::vector<double> ratings, size_t id, const CarType &carType,
+                            std::string carModel, std::string carColor, std::string carNumber);
+
+    /**
+     * Run only after 'logInDriver(args)' and 'logInPassenger(args)'
+     */
+    static void logInOrder(TimeStamp startTime, TimeStamp endTime,
+                           Location startLocation, Location endLocation, long double distance,
+                           long double cost, size_t passengerId, size_t driverId,
+                           Payment payment, size_t id);
+
+
     /**
      * @return order instance - if the order is made successfully
      *         nullptr - if there are no available drivers now

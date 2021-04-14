@@ -64,6 +64,8 @@ public:
     static const CarType &determineCarType(const std::string &carModel, const std::string &carColor,
                                            const std::string &carNumber);
 
+    static const CarType &getCarTypeFromName(const std::string &carTypeName);
+
 
     /* Member-functions */
 

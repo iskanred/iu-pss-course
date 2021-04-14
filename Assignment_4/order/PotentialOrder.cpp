@@ -16,7 +16,6 @@ PotentialOrder::PotentialOrder(Location from, Location to, const CarType &carTyp
 //  price of the potential ride from 'from' to 'to' locations
 // Now it is generated randomly
 long double PotentialOrder::computePrice(Location from, Location to, const CarType &carType) {
-    srand(time(nullptr));
     return rand() % 10000;
 }
 
@@ -24,7 +23,6 @@ long double PotentialOrder::computePrice(Location from, Location to, const CarTy
 //  the expected time of the potential ride from 'from' to 'to' locations
 // Now it is generated randomly
 TimeDuration PotentialOrder::computeExpectedTime(Location from, Location to, const CarType &carType) {
-    srand(time(nullptr));
     return TimeDuration(rand());
 }
 
@@ -32,7 +30,6 @@ TimeDuration PotentialOrder::computeExpectedTime(Location from, Location to, con
 //  the expected distance of the potential ride from 'from' to 'to' locations
 // Now it is generated randomly
 long double PotentialOrder::computeDistance(Location from, Location to, const CarType &carType) {
-    srand(time(nullptr));
     return rand() % 1000;
 }
 

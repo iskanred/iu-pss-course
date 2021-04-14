@@ -12,6 +12,9 @@
 
 class Driver : public User {
 
+    static inline size_t counter = 0;
+
+
     const Car& car;
 
     bool workingStatus;
@@ -32,8 +35,8 @@ public:
            std::string phoneNumber,
            std::string email,
            std::vector<double> ratings,
-           std::vector<const Order *> orderHistory,
-           const Car& car);
+           const Car& car,
+           size_t id);
 
 
     [[nodiscard]] bool isInRide() const;

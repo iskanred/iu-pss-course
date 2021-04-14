@@ -99,3 +99,7 @@ const std::string &TimeStamp::getMonth() const {
 size_t TimeStamp::getYear() const {
     return year;
 }
+
+time_t TimeStamp::getTimeOfStamp() const {
+    return timeOfStamp;
+}

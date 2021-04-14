@@ -3,19 +3,24 @@
 #include "../logic/PassengerGateway.h"
 #include "../io/Console.h"
 
+#include <algorithm>
+
+
 
 Passenger::Passenger(std::string name,std::string phoneNumber, std::string email) :
-    User(std::move(name), std::move(phoneNumber), std::move(email)),
+    User(std::move(name), std::move(phoneNumber), std::move(email), counter++),
     pinnedLocations(), paymentMethod()
 { }
 
 Passenger::Passenger(std::string name, std::string phoneNumber, std::string email,
-                     std::vector<double> ratings, std::vector<const Order *> orderHistory,
-                     std::vector<Location> pinnedLocations, Payment paymentMethod) :
+                     std::vector<double> ratings, std::vector<Location> pinnedLocations,
+                     Payment paymentMethod, size_t id) :
     User(std::move(name), std::move(phoneNumber), std::move(email),
-         std::move(ratings), std::move(orderHistory)),
+         std::move(ratings), id),
     pinnedLocations(std::move(pinnedLocations)), paymentMethod(paymentMethod)
-{ }
+{
+    counter = std::max(counter, id + 1);
+}
 
 
 void Passenger::addLocation(const Location &location) {

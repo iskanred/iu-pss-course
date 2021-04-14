@@ -28,9 +28,20 @@ class PassengerGateway {
                                 std::string phoneNumber,
                                 std::string email);
 
+    static void addExistedPassenger(std::string name,
+                                std::string phoneNumber,
+                                std::string email,
+                                std::vector<double> ratings,
+                                std::vector<Location> pinnedLocations,
+                                Payment paymentMethod,
+                                size_t id);
+
+
     static bool makeOrder(const Passenger& passenger, const PotentialOrder& potentialOrder, Payment payment);
 
     static void addOrderToHistoryOfPassenger(const Order &order);
+
+    static const Passenger &getPassengerById(size_t id);
 
 public:
     /* Deleting all possible ways to create an instance of this class */

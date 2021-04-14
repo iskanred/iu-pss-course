@@ -38,12 +38,11 @@ class TimeStamp {
 
     size_t year; // [2021 ... ]
 
-
-    explicit TimeStamp(time_t timeOfStamp);
-
     void init();
 
 public:
+    explicit TimeStamp(time_t timeOfStamp);
+
     TimeStamp();
 
 
@@ -77,6 +76,8 @@ public:
     [[nodiscard]] const std::string &getMonth() const;
 
     [[nodiscard]] size_t getYear() const;
+
+    time_t getTimeOfStamp() const;
 };
 
 
