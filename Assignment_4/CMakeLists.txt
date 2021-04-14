@@ -36,4 +36,6 @@ add_executable(
         logic/PassengerGateway.cpp logic/PassengerGateway.h
         logic/DriverGateway.cpp logic/DriverGateway.h
         logic/System.cpp logic/System.h
-        logic/DBHelper.cpp logic/DBHelper.h test/Test.cpp test/Test.h)
+        logic/DBHelper.cpp logic/DBHelper.h
+
+        test/Test.cpp test/Test.h)

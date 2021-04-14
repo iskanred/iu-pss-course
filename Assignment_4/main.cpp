@@ -18,9 +18,11 @@ using namespace std;
  * Thus, the information will be changed.
  *
  * Do not run this code multiple times because it can lead to users with the same information!
+ * The system does not provide checking information on uniqueness
  *
  * If you want to run this code multiple times, it is better to change users' information (names, etc.)
  *  to avoid confusions
+ *
  */
 
 
