@@ -8,6 +8,11 @@ BusinessCar::BusinessCar(std::string model, std::string color, std::string numbe
         waterBottles(5), snacks(5)
 { }
 
+BusinessCar::BusinessCar(std::string model, std::string color, std::string number, size_t id) :
+        Car(CarType::BUSINESS, std::move(model), std::move(color), std::move(number), id),
+        waterBottles(5), snacks(5)
+{ }
+
 
 void BusinessCar::parkRightInFrontOfTheEntrance() const {
     Console::printParkRightInFrontOfTheEntrance(*this);

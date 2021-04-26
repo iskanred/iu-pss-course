@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <string>
+#include <exception>
 
 
 
@@ -20,6 +21,10 @@ class Passenger : public User {
 
     std::vector<Location> pinnedLocations;
 
+    std::vector<int> devicesIds;
+
+    bool inRide;
+
     Payment paymentMethod;
 
 public:
@@ -28,7 +33,8 @@ public:
      */
     Passenger(std::string name,
               std::string phoneNumber,
-              std::string email);
+              std::string email,
+              int deviceId);
 
     /**
      * For an already existed passenger
@@ -38,9 +44,13 @@ public:
               std::string email,
               std::vector<double> ratings,
               std::vector<Location> pinnedLocations,
+              std::vector<int> devicesIds,
               Payment paymentMethod,
+              bool inRide,
               size_t id);
 
+
+    void login(int deviceId);
 
     void addLocation(const Location &location);
 
@@ -54,7 +64,7 @@ public:
      * If user agreed with conditions of the ride which he can figure out in the method
      *  'getPotentialRideInfo(Location, Location)', then he can order this ride by this method
      */
-    void makeOrder(const PotentialOrder &potentialOrder, Payment payment) const;
+    void makeOrder(const PotentialOrder &potentialOrder, Payment payment);
 
     /**
      * Same as 'makeOrder(const PotentialOrder&, Payment)' but with default
@@ -75,6 +85,24 @@ public:
     void setPaymentMethod(Payment payment);
 
     [[nodiscard]] Payment getPaymentMethod() const;
+
+    const std::vector<int> &getDevicesIds() const;
+
+    bool isInRide() const;
+
+    void setInRide(bool inRide);
+};
+
+
+
+class BlockedPassengerException : std::exception {
+
+    const std::string passengerInfo;
+
+public:
+    BlockedPassengerException(const Passenger &passenger);
+
+    [[nodiscard]] const char *what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override;
 };
 
 

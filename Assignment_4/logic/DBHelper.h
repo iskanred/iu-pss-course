@@ -3,6 +3,7 @@
 
 #include "../users/Passenger.h"
 #include "../users/Driver.h"
+#include "../users/Admin.h"
 
 #include <string>
 
@@ -17,6 +18,17 @@ class DBHelper {
 
     static inline const std::string DRIVERS_TABLE_PATH = PATH + "drivers.table";
 
+    static inline const std::string ADMINS_TABLE_PATH = PATH + "admins.table";
+
+    static inline const std::string CARS_TABLE_PATH = PATH + "cars.table";
+
+    static inline const std::string BLOCKED_PASSENGERS_TABLE_PATH = PATH + "blocked_passengers.table";
+
+    static inline const std::string BLOCKED_DRIVERS_TABLE_PATH = PATH + "blocked_drivers.table";
+
+
+
+    static std::list<const Car*> readCars();
 
     static void writeOrderToPassenger(const Order& order);
 
@@ -26,22 +38,54 @@ class DBHelper {
 
     static void writeOrderToDatumLine(int orderId, std::string &line);
 
+    static void writeNewCarToDriver(size_t driverId, size_t carId);
+
 
     static void copyContent(const std::string &fileFrom, const std::string &fileTo);
 
 
 public:
 
+    static bool checkIfPassengerExist(const std::string& phoneNumber);
+
+    static bool checkIfDriverExist(const std::string& phoneNumber);
+
+    static bool checkIfAdminExist(const std::string& phoneNumber);
+
+    static bool checkIfCarExist(const std::string& carNumber);
+
+
     static void writeNewPassenger(const Passenger& passenger);
 
-    static void writeNewDriverAndCar(const Driver& driver);
+    static void writeNewDriver(const Driver& driver);
+
+    static void writeNewAdmin(const Admin& admin);
+
+    static void writeNewCar(const Driver &driver, const Car &car);
 
     static void writeNewOrder(const Order& order);
+
+    static void writeBlockedPassenger(const Passenger& passenger);
+
+    static void writeBlockedDriver(const Driver &driver);
+
+    static void writeNewDeviceToPassenger(size_t passengerId, size_t deviceId);
+
+
+    static void removeBlockedPassenger(const Passenger& passenger);
+
+    static void removeBlockedDriver(const Driver &driver);
 
 
     static void readPassengers();
 
     static void readDrivers();
+
+    static void readAdmins();
+
+    static void readBlockedPassengers();
+
+    static void readBlockedDrivers();
 
     static void readOrders();
 

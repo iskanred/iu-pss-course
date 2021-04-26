@@ -1,6 +1,9 @@
 #include "DriverGateway.h"
 
+#include "System.h"
+
 #include <algorithm>
+#include <stdexcept>
 
 
 const Driver &DriverGateway::addNewDriver(std::string name, std::string phoneNumber,
@@ -15,12 +18,10 @@ const Driver &DriverGateway::addNewDriver(std::string name, std::string phoneNum
 
 void DriverGateway::addExistedDriver(std::string name, std::string phoneNumber, std::string email,
                                               std::vector<double> ratings, size_t id,
-                                              const CarType &carType, std::string carModel, std::string carColor, std::string carNumber)
+                                              std::list<const Car*> cars)
 {
-    auto& car = carType.getCarOfThisType(std::move(carModel), std::move(carColor), std::move(carNumber));
-
     drivers.emplace_back(std::move(name), std::move(phoneNumber),
-                         std::move(email), std::move(ratings), car, id);
+                         std::move(email), std::move(ratings), std::move(cars), id);
 }
 
 
@@ -28,8 +29,8 @@ const Driver *DriverGateway::getMatchedDriver(const PotentialOrder &potentialOrd
     // here can be honest matching algorithm
 
     for (const auto& driver : drivers) {
-        if (driver.isWorking() && !driver.isInRide() &&
-            driver.getCar().getCarType() == potentialOrder.getCarType())
+        if (!System::isDriverBlocked(driver) && driver.isWorking() && !driver.isInRide() &&
+            driver.getCurrentCar().getCarType() == potentialOrder.getCarType())
             return &driver;
     }
 
@@ -51,5 +52,18 @@ const Driver &DriverGateway::getDriverById(size_t id) {
     if (driverIt != drivers.end())
         return *(driverIt);
     else
-        throw ; // should throw an exception
+        throw std::invalid_argument("wrong driver id");
+}
+
+bool DriverGateway::registerNewCar(const Driver &driver, const Car &car) {
+    return System::registerNewCar(driver, car);
+}
+
+bool DriverGatewayCarAdder::addNewCar(const Driver &driver, const Car &car) {
+    return DriverGateway::registerNewCar(driver, car);
+}
+
+
+bool DriverGateway::isDriverBlocked(const Driver &driver) {
+    return System::isDriverBlocked(driver);
 }

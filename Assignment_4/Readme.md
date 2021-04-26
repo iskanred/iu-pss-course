@@ -1,4 +1,4 @@
-# Assignemnt 4
+# Assignemnt 4 & 5
 
 Implementation of Wendex Taxi backend
 
@@ -11,38 +11,40 @@ The program was successfully tested on **Windows 10** with **MinGW** compiler. I
 
 ## Project Files
 ```     
-       main.cpp
-       
-       users/User.cpp users/User.h
-       users/Passenger.cpp users/Passenger.h
-       users/Driver.cpp users/Driver.h
+   main.cpp
 
-       order/Order.cpp order/Order.h
-       order/PotentialOrder.cpp order/PotentialOrder.h
+   users/User.cpp users/User.h
+   users/Passenger.cpp users/Passenger.h
+   users/Driver.cpp users/Driver.h
+   users/Admin.cpp users/Admin.h
 
-       time/TimeStamp.cpp time/TimeStamp.h
-       time/TimeDuration.cpp time/TimeDuration.h
+   order/Order.cpp order/Order.h
+   order/PotentialOrder.cpp order/PotentialOrder.h
 
-       location/Location.cpp location/Location.h
+   time/TimeStamp.cpp time/TimeStamp.h
+   time/TimeDuration.cpp time/TimeDuration.h
 
-       payment/Payment.h
+   location/Location.cpp location/Location.h
 
-       cars/cars.h
-       cars/CarType.cpp cars/CarType.h
-       cars/Car.cpp cars/Car.h
-       cars/EconomyCar.cpp cars/EconomyCar.h
-       cars/ComfortCar.cpp cars/ComfortCar.h
-       cars/ComfortPlusCar.cpp cars/ComfortPlusCar.h
-       cars/BusinessCar.cpp cars/BusinessCar.h
+   payment/Payment.h
 
-       io/Console.cpp io/Console.h
+   cars/cars.h
+   cars/CarType.cpp cars/CarType.h
+   cars/Car.cpp cars/Car.h
+   cars/EconomyCar.cpp cars/EconomyCar.h
+   cars/ComfortCar.cpp cars/ComfortCar.h
+   cars/ComfortPlusCar.cpp cars/ComfortPlusCar.h
+   cars/BusinessCar.cpp cars/BusinessCar.h
 
-       logic/PassengerGateway.cpp logic/PassengerGateway.h
-       logic/DriverGateway.cpp logic/DriverGateway.h
-       logic/System.cpp logic/System.h
-       logic/DBHelper.cpp logic/DBHelper.h 
-       
-       test/Test.cpp test/Test.h
+   io/Console.cpp io/Console.h
+
+   logic/PassengerGateway.cpp logic/PassengerGateway.h
+   logic/DriverGateway.cpp logic/DriverGateway.h
+   logic/System.cpp logic/System.h
+   logic/DBHelper.cpp logic/DBHelper.h
+   logic/AdminGateway.cpp logic/AdminGateway.h
+
+   test/Test.cpp test/Test.h
 ```
 
 ## How to Run?

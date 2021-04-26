@@ -1,9 +1,6 @@
 #ifndef ASSIGNMENT_4_SYSTEM_H
 #define ASSIGNMENT_4_SYSTEM_H
 
-#include "PassengerGateway.h"
-#include "DriverGateway.h"
-#include "DBHelper.h"
 #include "../order/Order.h"
 
 #include "../test/Test.h"
@@ -17,15 +14,27 @@ class System {
 
     friend class Test;
 
+    friend class AdminGateway;
+
 
     static inline std::list<Order> orders;
+
+    static inline std::list<const Driver*> blockedDrivers;
+
+    static inline std::list<const Passenger*> blockedPassengers;
+
+
+    static std::list<const Passenger*> getPassengers();
+
+    static std::list<const Driver*> getDrivers();
 
 
 public:
 
     static void registerPassenger(std::string name,
                                   std::string phoneNumber,
-                                  std::string email);
+                                  std::string email,
+                                  int deviceId);
 
     static void registerDriver(std::string name,
                                std::string phoneNumber,
@@ -33,6 +42,12 @@ public:
                                std::string carModel,
                                std::string carColor,
                                std::string carNumber);
+
+    static void registerAdmin(std::string name,
+                              std::string phoneNumber,
+                              std::string email);
+
+    static void registerNewDevice(const Passenger &passenger, int deviceId);
 
 
     static void restoreInfo();
@@ -42,18 +57,24 @@ public:
                                std::string email,
                                std::vector<double> ratings,
                                std::vector<Location> pinnedLocations,
-                               Payment paymentMethod, size_t id);
+                               std::vector<int> devicesIds,
+                               Payment paymentMethod, bool inRide, size_t id);
 
     static void logInDriver(std::string name, std::string phoneNumber, std::string email,
-                            std::vector<double> ratings, size_t id, const CarType &carType,
-                            std::string carModel, std::string carColor, std::string carNumber);
+                            std::vector<double> ratings, size_t id, std::list<const Car*> cars);
+
+    static void logInAdmin(size_t id, std::string name, std::string phoneNumber, std::string email);
+
+    static void logInBlockedPassenger(size_t id);
+
+    static void logInBlockedDriver(size_t id);
 
     /**
      * Run only after 'logInDriver(args)' and 'logInPassenger(args)'
      */
     static void logInOrder(TimeStamp startTime, TimeStamp endTime,
                            Location startLocation, Location endLocation, long double distance,
-                           long double cost, size_t passengerId, size_t driverId,
+                           long double cost, size_t passengerId, size_t driverId, size_t carId,
                            Payment payment, size_t id);
 
 
@@ -62,6 +83,24 @@ public:
      *         nullptr - if there are no available drivers now
      */
     static bool makeOrder(const Passenger &passenger, const PotentialOrder &potentialOrder, Payment payment);
+
+    /**
+     * Check car and write to database
+     */
+    static bool registerNewCar(const Driver &driver, const Car &car);
+
+
+    static void addPassengerToBlockList(const Passenger &passenger);
+
+    static void addDriverToBlockList(const Driver &driver);
+
+    static bool isDriverBlocked(const Driver &driver);
+
+    static bool isPassengerBlocked(const Passenger &passenger);
+
+    static void removePassengerFromBlockList(const Passenger& passenger);
+
+    static void removeDriverFromBlockList(const Driver& driver);
 
 
     /* Deleting all possible ways to create an instance of this class */

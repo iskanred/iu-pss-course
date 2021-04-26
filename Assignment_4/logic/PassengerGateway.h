@@ -24,24 +24,26 @@ class PassengerGateway {
     static inline std::list<Passenger> passengers;
 
 
-    static const Passenger &addNewPassenger(std::string name,
-                                std::string phoneNumber,
-                                std::string email);
+    static const Passenger &addNewPassenger(std::string name, std::string phoneNumber, std::string email,
+                                int deviceId);
 
-    static void addExistedPassenger(std::string name,
-                                std::string phoneNumber,
-                                std::string email,
-                                std::vector<double> ratings,
-                                std::vector<Location> pinnedLocations,
-                                Payment paymentMethod,
-                                size_t id);
+    static void addExistedPassenger(std::string name, std::string phoneNumber,
+                                    std::string email, std::vector<double> ratings,
+                                    std::vector<Location> pinnedLocations, std::vector<int> devicesIds,
+                                    Payment paymentMethod, bool inRide, size_t id);
+
+    static void addNewDevice(const Passenger &passenger, int deviceId);
 
 
     static bool makeOrder(const Passenger& passenger, const PotentialOrder& potentialOrder, Payment payment);
 
     static void addOrderToHistoryOfPassenger(const Order &order);
 
+    static void setInRideToPassenger(const Passenger &passenger);
+
     static const Passenger &getPassengerById(size_t id);
+
+    static bool isPassengerBlocked(const Passenger& passenger);
 
 public:
     /* Deleting all possible ways to create an instance of this class */

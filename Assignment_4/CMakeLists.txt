@@ -12,6 +12,7 @@ add_executable(
         users/User.cpp users/User.h
         users/Passenger.cpp users/Passenger.h
         users/Driver.cpp users/Driver.h
+        users/Admin.cpp users/Admin.h
 
         order/Order.cpp order/Order.h
         order/PotentialOrder.cpp order/PotentialOrder.h
@@ -37,5 +38,6 @@ add_executable(
         logic/DriverGateway.cpp logic/DriverGateway.h
         logic/System.cpp logic/System.h
         logic/DBHelper.cpp logic/DBHelper.h
+        logic/AdminGateway.cpp logic/AdminGateway.h
 
         test/Test.cpp test/Test.h)

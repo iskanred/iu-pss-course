@@ -6,6 +6,11 @@ ComfortPlusCar::ComfortPlusCar(std::string model, std::string color, std::string
         waterBottles(5), snacks(5)
 { }
 
+ComfortPlusCar::ComfortPlusCar(std::string model, std::string color, std::string number, size_t id) :
+        Car(CarType::COMFORT_PLUS, std::move(model), std::move(color), std::move(number), id),
+        waterBottles(5), snacks(5)
+{ }
+
 
 size_t ComfortPlusCar::getWaterBottles() const {
     return waterBottles;
