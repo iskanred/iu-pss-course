@@ -13,6 +13,8 @@ class BusinessCar : public Car {
 public:
     BusinessCar(std::string model, std::string color, std::string number);
 
+    BusinessCar(std::string model, std::string color, std::string number, size_t id);
+
 
     void parkRightInFrontOfTheEntrance() const;
 

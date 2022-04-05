@@ -12,6 +12,8 @@ class CarType;
 
 class Car {
 
+    static inline size_t counter = 0;
+
 protected:
 
     const CarType *carType;
@@ -22,10 +24,23 @@ protected:
 
     std::string number;
 
+    size_t id;
+
+
+    /* For new cars */
     Car(const CarType& carType,
         std::string model,
         std::string color,
         std::string number);
+
+
+    /* For already existed cars */
+
+    Car(const CarType& carType,
+        std::string model,
+        std::string color,
+        std::string number,
+        size_t id);
 
 public:
 
@@ -47,6 +62,7 @@ public:
 
     [[nodiscard]] const std::string &getNumber() const;
 
+    size_t getId() const;
 
 
     /* Deleting all possible ways to create an instance of this class */

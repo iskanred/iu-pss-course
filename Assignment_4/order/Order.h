@@ -5,6 +5,7 @@
 #include "../time/TimeDuration.h"
 #include "../location/Location.h"
 #include "../users/Passenger.h"
+#include "../cars/cars.h"
 #include "../users/Driver.h"
 #include "../payment/Payment.h"
 
@@ -35,18 +36,20 @@ class Order {
 
     const Driver &driver;
 
+    const Car &car;
+
     const Payment payment;
 
 public:
     /* For a new order */
     Order(TimeStamp startTime, TimeStamp endTime,
           Location startLocation, Location endLocation, long double distance,
-          long double cost, const Passenger &passenger, const Driver &driver, Payment payment);
+          long double cost, const Passenger &passenger, const Driver &driver, const Car &car, Payment payment);
 
     /* For an already existed order */
     Order(TimeStamp startTime, TimeStamp endTime,
           Location startLocation, Location endLocation, long double distance,
-          long double cost, const Passenger &passenger, const Driver &driver,
+          long double cost, const Passenger &passenger, const Driver &driver, const Car &car,
           Payment payment, size_t id);
 
 
@@ -71,9 +74,9 @@ public:
 
     [[nodiscard]] const Driver &getDriver() const;
 
+    const Car &getCar() const;
+
     [[nodiscard]] Payment getPayment() const;
-
-
 };
 
 

@@ -1,11 +1,17 @@
 #include "Car.h"
 
-#include <ctime>
+#include <algorithm>
 
 
 Car::Car(const CarType &carType, std::string model, std::string color, std::string number) :
-    carType(&carType), model(std::move(model)), color(std::move(color)), number(std::move(number))
+    carType(&carType), model(std::move(model)), color(std::move(color)), number(std::move(number)), id(counter++)
 { }
+
+Car::Car(const CarType &carType, std::string model, std::string color, std::string number, size_t id) :
+    carType(&carType), model(std::move(model)), color(std::move(color)), number(std::move(number)), id(id)
+{
+    counter = std::max(counter, id + 1);
+}
 
 
 std::string Car::toString() const {
@@ -42,4 +48,8 @@ const std::string &Car::getColor() const {
 
 const std::string &Car::getNumber() const {
     return number;
+}
+
+size_t Car::getId() const {
+    return id;
 }

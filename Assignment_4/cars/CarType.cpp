@@ -6,6 +6,7 @@
 #include "BusinessCar.h"
 
 #include <ctime>
+#include <stdexcept>
 
 
 const CarType CarType::ECONOMY = CarType(Type::Economy);
@@ -34,7 +35,7 @@ size_t CarType::getCarTypesNumber() {
 
 const CarType &CarType::getCarTypeById(int id) {
     if (id < 0 || id >= getCarTypesNumber())
-        throw ; // should throw an exception
+        throw std::invalid_argument("wrong car id");
 
     Type type = Type(id);
 
@@ -72,7 +73,7 @@ const CarType &CarType::getCarTypeFromName(const std::string &carTypeName) {
     else if (carTypeName == BUSINESS.toString())
         return BUSINESS;
     else
-        throw; // should throw an exception
+        throw std::invalid_argument("wrong name of car type");
 }
 
 

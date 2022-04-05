@@ -8,6 +8,8 @@ class EconomyCar : public Car {
 
 public:
     EconomyCar(std::string model, std::string color, std::string number);
+
+    EconomyCar(std::string model, std::string color, std::string number, size_t id);
 };
 
 

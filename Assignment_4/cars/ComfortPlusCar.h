@@ -14,6 +14,8 @@ class ComfortPlusCar : public Car {
 public:
     ComfortPlusCar(std::string model, std::string color, std::string number);
 
+    ComfortPlusCar(std::string model, std::string color, std::string number, size_t id);
+
 
     [[nodiscard]] size_t getWaterBottles() const;
 
